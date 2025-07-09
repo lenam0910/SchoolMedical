@@ -1,0 +1,48 @@
+﻿<Page x:Class="SchoolMedicalWPF.Pages.MedicationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Quản lý Thuốc">
+    <Grid Margin="20" Background="{StaticResource SecondaryColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Form nhập liệu -->
+        <Border Grid.Row="0" Background="{StaticResource CardBackground}" CornerRadius="10" Padding="15" Margin="0,0,0,15">
+            <StackPanel>
+                <TextBlock Text="Thông tin thuốc" Style="{StaticResource CustomTextBlock}" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+                <ComboBox x:Name="StudentComboBox" Margin="0,5" FontFamily="Segoe UI" FontSize="14" DisplayMemberPath="FullName"/>
+                <TextBox x:Name="NameTextBox" Style="{StaticResource CustomTextBox}" Margin="0,5" Tag="Tên thuốc"/>
+                <TextBox x:Name="DosageTextBox" Style="{StaticResource CustomTextBox}" Margin="0,5" Tag="Liều lượng"/>
+                <TextBox x:Name="FrequencyTextBox" Style="{StaticResource CustomTextBox}" Margin="0,5" Tag="Tần suất"/>
+                <DatePicker x:Name="StartDatePicker" Margin="0,5" FontFamily="Segoe UI" FontSize="14"/>
+                <DatePicker x:Name="EndDatePicker" Margin="0,5" FontFamily="Segoe UI" FontSize="14"/>
+                <ComboBox x:Name="PrescribedByComboBox" Margin="0,5" FontFamily="Segoe UI" FontSize="14" DisplayMemberPath="FullName"/>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <Button Content="Thêm" Click="AddMedication" Style="{StaticResource CustomButton}" Margin="0,0,10,0" Width="100"/>
+                    <Button Content="Cập nhật" Click="UpdateMedication" Style="{StaticResource CustomButton}" Margin="0,0,10,0" Width="100"/>
+                    <Button Content="Xóa" Click="DeleteMedication" Style="{StaticResource CustomButton}" Margin="0,0,10,0" Width="100"/>
+                    <Button Content="Xóa form" Click="ClearInputs" Style="{StaticResource CustomButton}" Margin="0,0,10,0" Width="100"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Danh sách thuốc -->
+        <Border Grid.Row="1" Background="{StaticResource CardBackground}" CornerRadius="10" Padding="10">
+            <DataGrid x:Name="MedicationsDataGrid" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" 
+                      SelectionChanged="MedicationsDataGrid_SelectionChanged" BorderThickness="0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding MedicationId}" Width="50"/>
+                    <DataGridTextColumn Header="Học sinh" Binding="{Binding Student.FullName}" Width="150"/>
+                    <DataGridTextColumn Header="Tên thuốc" Binding="{Binding Name}" Width="120"/>
+                    <DataGridTextColumn Header="Liều lượng" Binding="{Binding Dosage}" Width="100"/>
+                    <DataGridTextColumn Header="Tần suất" Binding="{Binding Frequency}" Width="100"/>
+                    <DataGridTextColumn Header="Bắt đầu" Binding="{Binding StartDate, StringFormat=dd/MM/yyyy}" Width="100"/>
+                    <DataGridTextColumn Header="Kết thúc" Binding="{Binding EndDate, StringFormat=dd/MM/yyyy}" Width="100"/>
+                    <DataGridTextColumn Header="Bác sĩ" Binding="{Binding PrescribedByNavigation.FullName}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+    </Grid>
+</Page>

@@ -1,0 +1,70 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\THIS PC\\Desktop\\SchoolMedicalSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E4FAE8C0-C184-4057-AED9-FC2EABD87046}|SchoolMedicalWPF\\SchoolMedicalWPF.csproj|c:\\users\\this pc\\desktop\\schoolmedicalsystem\\schoolmedicalwpf\\services\\chatbotai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4FAE8C0-C184-4057-AED9-FC2EABD87046}|SchoolMedicalWPF\\SchoolMedicalWPF.csproj|solutionrelative:schoolmedicalwpf\\services\\chatbotai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4FAE8C0-C184-4057-AED9-FC2EABD87046}|SchoolMedicalWPF\\SchoolMedicalWPF.csproj|c:\\users\\this pc\\desktop\\schoolmedicalsystem\\schoolmedicalwpf\\dashboard.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4FAE8C0-C184-4057-AED9-FC2EABD87046}|SchoolMedicalWPF\\SchoolMedicalWPF.csproj|solutionrelative:schoolmedicalwpf\\dashboard.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4FAE8C0-C184-4057-AED9-FC2EABD87046}|SchoolMedicalWPF\\SchoolMedicalWPF.csproj|c:\\users\\this pc\\desktop\\schoolmedicalsystem\\schoolmedicalwpf\\dashboard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{E4FAE8C0-C184-4057-AED9-FC2EABD87046}|SchoolMedicalWPF\\SchoolMedicalWPF.csproj|solutionrelative:schoolmedicalwpf\\dashboard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ChatBotAI.cs",
+              "DocumentMoniker": "C:\\Users\\THIS PC\\Desktop\\SchoolMedicalSystem\\SchoolMedicalWPF\\Services\\ChatBotAI.cs",
+              "RelativeDocumentMoniker": "SchoolMedicalWPF\\Services\\ChatBotAI.cs",
+              "ToolTip": "C:\\Users\\THIS PC\\Desktop\\SchoolMedicalSystem\\SchoolMedicalWPF\\Services\\ChatBotAI.cs",
+              "RelativeToolTip": "SchoolMedicalWPF\\Services\\ChatBotAI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABRAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T16:19:41.456Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Dashboard.xaml",
+              "DocumentMoniker": "C:\\Users\\THIS PC\\Desktop\\SchoolMedicalSystem\\SchoolMedicalWPF\\Dashboard.xaml",
+              "RelativeDocumentMoniker": "SchoolMedicalWPF\\Dashboard.xaml",
+              "ToolTip": "C:\\Users\\THIS PC\\Desktop\\SchoolMedicalSystem\\SchoolMedicalWPF\\Dashboard.xaml",
+              "RelativeToolTip": "SchoolMedicalWPF\\Dashboard.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-07-09T16:04:29.718Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Dashboard.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\THIS PC\\Desktop\\SchoolMedicalSystem\\SchoolMedicalWPF\\Dashboard.xaml.cs",
+              "RelativeDocumentMoniker": "SchoolMedicalWPF\\Dashboard.xaml.cs",
+              "ToolTip": "C:\\Users\\THIS PC\\Desktop\\SchoolMedicalSystem\\SchoolMedicalWPF\\Dashboard.xaml.cs",
+              "RelativeToolTip": "SchoolMedicalWPF\\Dashboard.xaml.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAADwv2QAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T16:04:17.837Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

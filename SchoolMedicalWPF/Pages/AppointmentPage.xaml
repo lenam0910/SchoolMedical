@@ -1,0 +1,48 @@
+﻿<Page x:Class="SchoolMedicalWPF.Pages.AppointmentPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Quản lý Lịch hẹn">
+    <Grid Margin="20" Background="{StaticResource SecondaryColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Form nhập liệu -->
+        <Border Grid.Row="0" Background="{StaticResource CardBackground}" CornerRadius="10" Padding="15" Margin="0,0,0,15">
+            <StackPanel>
+                <TextBlock Text="Thông tin lịch hẹn" Style="{StaticResource CustomTextBlock}" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+                <ComboBox x:Name="StudentComboBox" Margin="0,5" FontFamily="Segoe UI" FontSize="14" DisplayMemberPath="FullName"/>
+                <ComboBox x:Name="StaffComboBox" Margin="0,5" FontFamily="Segoe UI" FontSize="14" DisplayMemberPath="FullName"/>
+                <DatePicker x:Name="AppointmentDatePicker" Margin="0,5" FontFamily="Segoe UI" FontSize="14"/>
+                <TextBox x:Name="ReasonTextBox" Style="{StaticResource CustomTextBox}" Margin="0,5" Tag="Lý do"/>
+                <ComboBox x:Name="StatusComboBox" Margin="0,5" FontFamily="Segoe UI" FontSize="14">
+                    <ComboBoxItem Content="Scheduled"/>
+                    <ComboBoxItem Content="Completed"/>
+                    <ComboBoxItem Content="Cancelled"/>
+                </ComboBox>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <Button Content="Thêm" Click="AddAppointment" Style="{StaticResource CustomButton}" Margin="0,0,10,0" Width="100"/>
+                    <Button Content="Cập nhật" Click="UpdateAppointment" Style="{StaticResource CustomButton}" Margin="0,0,10,0" Width="100"/>
+                    <Button Content="Xóa" Click="DeleteAppointment" Style="{StaticResource CustomButton}" Margin="0,0,10,0" Width="100"/>
+                    <Button Content="Xóa form" Click="ClearInputs" Style="{StaticResource CustomButton}" Margin="0,0,10,0" Width="100"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Danh sách lịch hẹn -->
+        <Border Grid.Row="1" Background="{StaticResource CardBackground}" CornerRadius="10" Padding="10">
+            <DataGrid x:Name="AppointmentsDataGrid" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" 
+                      SelectionChanged="AppointmentsDataGrid_SelectionChanged" BorderThickness="0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding AppointmentId}" Width="50"/>
+                    <DataGridTextColumn Header="Học sinh" Binding="{Binding Student.FullName}" Width="150"/>
+                    <DataGridTextColumn Header="Nhân viên" Binding="{Binding Staff.FullName}" Width="150"/>
+                    <DataGridTextColumn Header="Ngày hẹn" Binding="{Binding AppointmentDate, StringFormat=dd/MM/yyyy HH:mm}" Width="120"/>
+                    <DataGridTextColumn Header="Lý do" Binding="{Binding Reason}" Width="150"/>
+                    <DataGridTextColumn Header="Trạng thái" Binding="{Binding Status}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+    </Grid>
+</Page>

@@ -1,0 +1,41 @@
+﻿<Page x:Class="SchoolMedicalWPF.Pages.NotificationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Quản lý Thông báo">
+    <Grid Margin="20" Background="{StaticResource SecondaryColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Form nhập liệu -->
+        <Border Grid.Row="0" Background="{StaticResource CardBackground}" CornerRadius="10" Padding="15" Margin="0,0,0,15">
+            <StackPanel>
+                <TextBlock Text="Thông tin thông báo" Style="{StaticResource CustomTextBlock}" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+                <ComboBox x:Name="StaffComboBox" Margin="0,5" FontFamily="Segoe UI" FontSize="14" DisplayMemberPath="FullName"/>
+                <TextBox x:Name="MessageTextBox" Style="{StaticResource CustomTextBox}" Margin="0,5" Tag="Thông điệp" AcceptsReturn="True" Height="60"/>
+                <CheckBox x:Name="IsReadCheckBox" Content="Đã đọc" Margin="0,5" FontFamily="Segoe UI" FontSize="14"/>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <Button Content="Thêm" Click="AddNotification" Style="{StaticResource CustomButton}" Margin="0,0,10,0" Width="100"/>
+                    <Button Content="Cập nhật" Click="UpdateNotification" Style="{StaticResource CustomButton}" Margin="0,0,10,0" Width="100"/>
+                    <Button Content="Xóa" Click="DeleteNotification" Style="{StaticResource CustomButton}" Margin="0,0,10,0" Width="100"/>
+                    <Button Content="Xóa form" Click="ClearInputs" Style="{StaticResource CustomButton}" Margin="0,0,10,0" Width="100"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Danh sách thông báo -->
+        <Border Grid.Row="1" Background="{StaticResource CardBackground}" CornerRadius="10" Padding="10">
+            <DataGrid x:Name="NotificationsDataGrid" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" 
+                      SelectionChanged="NotificationsDataGrid_SelectionChanged" BorderThickness="0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding NotificationId}" Width="50"/>
+                    <DataGridTextColumn Header="Nhân viên" Binding="{Binding Staff.FullName}" Width="150"/>
+                    <DataGridTextColumn Header="Thông điệp" Binding="{Binding Message}" Width="200"/>
+                    <DataGridCheckBoxColumn Header="Đã đọc" Binding="{Binding IsRead}" Width="80"/>
+                    <DataGridTextColumn Header="Ngày tạo" Binding="{Binding CreatedAt, StringFormat=dd/MM/yyyy HH:mm}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+    </Grid>
+</Page>

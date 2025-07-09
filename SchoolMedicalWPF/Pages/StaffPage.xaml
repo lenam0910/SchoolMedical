@@ -1,0 +1,47 @@
+﻿<Page x:Class="SchoolMedicalWPF.Pages.StaffPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Quản lý Nhân viên">
+    <Grid Margin="20" Background="{StaticResource SecondaryColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Form nhập liệu -->
+        <Border Grid.Row="0" Background="{StaticResource CardBackground}" CornerRadius="10" Padding="15" Margin="0,0,0,15">
+            <StackPanel>
+                <TextBlock Text="Thông tin nhân viên" Style="{StaticResource CustomTextBlock}" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+                <TextBox x:Name="FirstNameTextBox" Style="{StaticResource CustomTextBox}" Margin="0,5" Tag="Họ"/>
+                <TextBox x:Name="LastNameTextBox" Style="{StaticResource CustomTextBox}" Margin="0,5" Tag="Tên"/>
+                <TextBox x:Name="RoleTextBox" Style="{StaticResource CustomTextBox}" Margin="0,5" Tag="Vai trò"/>
+                <TextBox x:Name="UsernameTextBox" Style="{StaticResource CustomTextBox}" Margin="0,5" Tag="Tên đăng nhập"/>
+                <TextBox x:Name="PasswordHashTextBox" Style="{StaticResource CustomTextBox}" Margin="0,5" Tag="Mật khẩu (Hash)"/>
+                <TextBox x:Name="EmailTextBox" Style="{StaticResource CustomTextBox}" Margin="0,5" Tag="Email"/>
+                <TextBox x:Name="ContactTextBox" Style="{StaticResource CustomTextBox}" Margin="0,5" Tag="Liên hệ"/>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <Button Content="Thêm" Click="AddStaff" Style="{StaticResource CustomButton}" Margin="0,0,10,0" Width="100"/>
+                    <Button Content="Cập nhật" Click="UpdateStaff" Style="{StaticResource CustomButton}" Margin="0,0,10,0" Width="100"/>
+                    <Button Content="Xóa" Click="DeleteStaff" Style="{StaticResource CustomButton}" Margin="0,0,10,0" Width="100"/>
+                    <Button Content="Xóa form" Click="ClearInputs" Style="{StaticResource CustomButton}" Margin="0,0,10,0" Width="100"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Danh sách nhân viên -->
+        <Border Grid.Row="1" Background="{StaticResource CardBackground}" CornerRadius="10" Padding="10">
+            <DataGrid x:Name="StaffDataGrid" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" 
+                      SelectionChanged="StaffDataGrid_SelectionChanged" BorderThickness="0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding StaffId}" Width="50"/>
+                    <DataGridTextColumn Header="Họ" Binding="{Binding FirstName}" Width="100"/>
+                    <DataGridTextColumn Header="Tên" Binding="{Binding LastName}" Width="100"/>
+                    <DataGridTextColumn Header="Vai trò" Binding="{Binding Role}" Width="100"/>
+                    <DataGridTextColumn Header="Tên đăng nhập" Binding="{Binding Username}" Width="120"/>
+                    <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="150"/>
+                    <DataGridTextColumn Header="Liên hệ" Binding="{Binding Contact}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+    </Grid>
+</Page>
