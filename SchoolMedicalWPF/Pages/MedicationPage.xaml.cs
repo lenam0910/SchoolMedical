@@ -20,21 +20,19 @@ namespace SchoolMedicalWPF.Pages
         public MedicationPage()
         {
             InitializeComponent();
-      
             _medicationService = new MedicationService();
             _studentService = new StudentService();
             _staffService = new StaffService();
             LoadData();
         }
 
-      
-        private async void LoadData()
+        private void LoadData()
         {
             try
             {
-                MedicationsDataGrid.ItemsSource = await _medicationService.GetAllAsync();
-                StudentComboBox.ItemsSource = await _studentService.GetAllAsync();
-                PrescribedByComboBox.ItemsSource = await _staffService.GetAllAsync();
+                MedicationsDataGrid.ItemsSource = _medicationService.GetAllAsync();
+                StudentComboBox.ItemsSource = _studentService.GetAllAsync();
+                PrescribedByComboBox.ItemsSource = _staffService.GetAllAsync();
             }
             catch (Exception ex)
             {
@@ -42,7 +40,7 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void AddMedication(object sender, RoutedEventArgs e)
+        private void AddMedication(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -50,6 +48,8 @@ namespace SchoolMedicalWPF.Pages
                 var selectedStaff = PrescribedByComboBox.SelectedItem as Staff;
                 if (selectedStudent == null || selectedStaff == null)
                     throw new ArgumentException("Vui lòng chọn học sinh và bác sĩ.");
+                if (!StartDatePicker.SelectedDate.HasValue || !EndDatePicker.SelectedDate.HasValue)
+                    throw new ArgumentException("Vui lòng chọn ngày bắt đầu và ngày kết thúc.");
 
                 var medication = new Medication
                 {
@@ -57,11 +57,11 @@ namespace SchoolMedicalWPF.Pages
                     Name = NameTextBox.Text,
                     Dosage = DosageTextBox.Text,
                     Frequency = FrequencyTextBox.Text,
-                    StartDate = DateOnly.Parse(StartDatePicker.SelectedDate.ToString()),
-                    EndDate = DateOnly.Parse(EndDatePicker.SelectedDate.ToString()),
+                    StartDate = DateOnly.FromDateTime(StartDatePicker.SelectedDate.Value),
+                    EndDate = DateOnly.FromDateTime(EndDatePicker.SelectedDate.Value),
                     PrescribedBy = selectedStaff.StaffId
                 };
-                await _medicationService.AddAsync(medication);
+                _medicationService.AddAsync(medication);
                 LoadData();
                 ClearInputs();
                 MessageBox.Show("Thêm thuốc thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -72,7 +72,7 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void UpdateMedication(object sender, RoutedEventArgs e)
+        private void UpdateMedication(object sender, RoutedEventArgs e)
         {
             if (_selectedMedication == null)
             {
@@ -86,15 +86,17 @@ namespace SchoolMedicalWPF.Pages
                 var selectedStaff = PrescribedByComboBox.SelectedItem as Staff;
                 if (selectedStudent == null || selectedStaff == null)
                     throw new ArgumentException("Vui lòng chọn học sinh và bác sĩ.");
+                if (!StartDatePicker.SelectedDate.HasValue || !EndDatePicker.SelectedDate.HasValue)
+                    throw new ArgumentException("Vui lòng chọn ngày bắt đầu và ngày kết thúc.");
 
                 _selectedMedication.StudentId = selectedStudent.StudentId;
                 _selectedMedication.Name = NameTextBox.Text;
                 _selectedMedication.Dosage = DosageTextBox.Text;
                 _selectedMedication.Frequency = FrequencyTextBox.Text;
-                _selectedMedication.StartDate = DateOnly.Parse(StartDatePicker.SelectedDate.ToString());
-                _selectedMedication.EndDate =  DateOnly.Parse(EndDatePicker.SelectedDate.ToString());
+                _selectedMedication.StartDate = DateOnly.FromDateTime(StartDatePicker.SelectedDate.Value);
+                _selectedMedication.EndDate = DateOnly.FromDateTime(EndDatePicker.SelectedDate.Value);
                 _selectedMedication.PrescribedBy = selectedStaff.StaffId;
-                await _medicationService.UpdateAsync(_selectedMedication);
+                _medicationService.UpdateAsync(_selectedMedication);
                 LoadData();
                 ClearInputs();
                 MessageBox.Show("Cập nhật thuốc thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -105,7 +107,7 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void DeleteMedication(object sender, RoutedEventArgs e)
+        private void DeleteMedication(object sender, RoutedEventArgs e)
         {
             if (_selectedMedication == null)
             {
@@ -118,7 +120,7 @@ namespace SchoolMedicalWPF.Pages
             {
                 try
                 {
-                    await _medicationService.DeleteAsync(_selectedMedication.MedicationId);
+                    _medicationService.DeleteAsync(_selectedMedication.MedicationId);
                     LoadData();
                     ClearInputs();
                     MessageBox.Show("Xóa thuốc thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -135,13 +137,19 @@ namespace SchoolMedicalWPF.Pages
             _selectedMedication = MedicationsDataGrid.SelectedItem as Medication;
             if (_selectedMedication != null)
             {
-                StudentComboBox.SelectedItem = _selectedMedication.Student;
+                // Tìm Student trong ItemsSource của ComboBox dựa trên StudentId
+                var selectedStudent = (StudentComboBox.ItemsSource as IEnumerable<Student>)?.FirstOrDefault(s => s.StudentId == _selectedMedication.StudentId);
+                StudentComboBox.SelectedItem = selectedStudent;
+
+                // Tìm Staff trong ItemsSource của ComboBox dựa trên StaffId
+                var selectedStaff = (PrescribedByComboBox.ItemsSource as IEnumerable<Staff>)?.FirstOrDefault(s => s.StaffId == _selectedMedication.PrescribedBy);
+                PrescribedByComboBox.SelectedItem = selectedStaff;
+
                 NameTextBox.Text = _selectedMedication.Name;
                 DosageTextBox.Text = _selectedMedication.Dosage;
                 FrequencyTextBox.Text = _selectedMedication.Frequency;
-                StartDatePicker.SelectedDate = DateTime.Parse(_selectedMedication.StartDate.ToString());
+                StartDatePicker.SelectedDate =DateTime.Parse(_selectedMedication.StartDate.ToString());
                 EndDatePicker.SelectedDate = DateTime.Parse(_selectedMedication.EndDate.ToString());
-                PrescribedByComboBox.SelectedItem = _selectedMedication.PrescribedByNavigation;
             }
         }
 

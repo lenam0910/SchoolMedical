@@ -15,39 +15,39 @@ namespace SchoolMedicalWPF.Services
             _context = new SchoolMedicalDbContext();
         }
 
-        public async Task<List<Appointment>> GetAllAsync()
+        public List<Appointment> GetAllAsync()
         {
-            return await _context.Appointments.Include(a => a.Student).Include(a => a.Staff).ToListAsync();
+            return  _context.Appointments.Include(a => a.Student).Include(a => a.Staff).ToList();
         }
 
-        public async Task<Appointment> GetByIdAsync(int id)
+        public Appointment GetByIdAsync(int id)
         {
-            return await _context.Appointments.FindAsync(id);
+            return  _context.Appointments.Find(id);
         }
 
-        public async Task AddAsync(Appointment appointment)
+        public void AddAsync(Appointment appointment)
         {
             if (appointment.StudentId <= 0 || appointment.StaffId <= 0)
                 throw new ArgumentException("ID học sinh hoặc nhân viên không hợp lệ.");
             _context.Appointments.Add(appointment);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
-        public async Task UpdateAsync(Appointment appointment)
+        public void UpdateAsync(Appointment appointment)
         {
             if (appointment.StudentId <= 0 || appointment.StaffId <= 0)
                 throw new ArgumentException("ID học sinh hoặc nhân viên không hợp lệ.");
             _context.Appointments.Update(appointment);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
-        public async Task DeleteAsync(int id)
+        public void DeleteAsync(int id)
         {
-            var appointment = await _context.Appointments.FindAsync(id);
+            var appointment = _context.Appointments.Find(id);
             if (appointment == null)
                 throw new KeyNotFoundException("Không tìm thấy lịch hẹn.");
             _context.Appointments.Remove(appointment);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }

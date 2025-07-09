@@ -12,12 +12,24 @@
         <Border Grid.Row="0" Background="{StaticResource CardBackground}" CornerRadius="10" Padding="15" Margin="0,0,0,15">
             <StackPanel>
                 <TextBlock Text="Thông tin tài liệu" Style="{StaticResource CustomTextBlock}" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
-                <ComboBox x:Name="StudentComboBox" Margin="0,5" FontFamily="Segoe UI" FontSize="14" DisplayMemberPath="FullName"/>
-                <TextBox x:Name="FileNameTextBox" Style="{StaticResource CustomTextBox}" Margin="0,5" Tag="Tên tệp"/>
-                <TextBox x:Name="FilePathTextBox" Style="{StaticResource CustomTextBox}" Margin="0,5" Tag="Đường dẫn tệp" IsReadOnly="True"/>
-                <Button Content="Chọn tệp" Click="SelectFile_Click" Style="{StaticResource CustomButton}" Margin="0,5,0,0" Width="100"/>
-                <TextBox x:Name="DescriptionTextBox" Style="{StaticResource CustomTextBox}" Margin="0,5" Tag="Mô tả" AcceptsReturn="True" Height="60"/>
-                <ComboBox x:Name="UploadedByComboBox" Margin="0,5" FontFamily="Segoe UI" FontSize="14" DisplayMemberPath="FullName"/>
+
+                <TextBlock Text="Học sinh" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
+                <ComboBox x:Name="StudentComboBox" Margin="0,0,0,5" FontFamily="Segoe UI" FontSize="14" DisplayMemberPath="FullName"/>
+
+                <TextBlock Text="Tên tệp" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
+                <TextBox x:Name="FileNameTextBox" Style="{StaticResource CustomTextBox}" Margin="0,0,0,5" Tag="Tên tệp"/>
+
+                <TextBlock Text="Đường dẫn tệp" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
+                <TextBox x:Name="FilePathTextBox" Style="{StaticResource CustomTextBox}" Margin="0,0,0,5" Tag="Đường dẫn tệp" IsReadOnly="True"/>
+
+                <Button Content="Chọn tệp" Click="SelectFile_Click" Style="{StaticResource CustomButton}" Margin="0,5,0,5" Width="100"/>
+
+                <TextBlock Text="Mô tả" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
+                <TextBox x:Name="DescriptionTextBox" Style="{StaticResource CustomTextBox}" Margin="0,0,0,5" Tag="Mô tả" AcceptsReturn="True" Height="60"/>
+
+                <TextBlock Text="Người tải lên" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
+                <ComboBox x:Name="UploadedByComboBox" Margin="0,0,0,5" FontFamily="Segoe UI" FontSize="14" DisplayMemberPath="FullName"/>
+
                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                     <Button Content="Thêm" Click="AddDocument" Style="{StaticResource CustomButton}" Margin="0,0,10,0" Width="100"/>
                     <Button Content="Cập nhật" Click="UpdateDocument" Style="{StaticResource CustomButton}" Margin="0,0,10,0" Width="100"/>

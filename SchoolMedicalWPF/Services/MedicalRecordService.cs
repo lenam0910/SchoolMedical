@@ -15,39 +15,39 @@ namespace SchoolMedicalWPF.Services
             _context = new SchoolMedicalDbContext();
         }
 
-        public async Task<List<MedicalRecord>> GetAllAsync()
+        public  List<MedicalRecord> GetAllAsync()
         {
-            return await _context.MedicalRecords.Include(m => m.Student).ToListAsync();
+            return  _context.MedicalRecords.Include(m => m.Student).ToList();
         }
 
-        public async Task<MedicalRecord> GetByIdAsync(int id)
+        public MedicalRecord GetByIdAsync(int id)
         {
-            return await _context.MedicalRecords.FindAsync(id);
+            return  _context.MedicalRecords.Find(id);
         }
 
-        public async Task AddAsync(MedicalRecord record)
+        public void AddAsync(MedicalRecord record)
         {
             if (record.StudentId <= 0)
                 throw new ArgumentException("ID học sinh không hợp lệ.");
             _context.MedicalRecords.Add(record);
-            await _context.SaveChangesAsync();
+             _context.SaveChanges();
         }
 
-        public async Task UpdateAsync(MedicalRecord record)
+        public void UpdateAsync(MedicalRecord record)
         {
             if (record.StudentId <= 0)
                 throw new ArgumentException("ID học sinh không hợp lệ.");
             _context.MedicalRecords.Update(record);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
-        public async Task DeleteAsync(int id)
+        public void DeleteAsync(int id)
         {
-            var record = await _context.MedicalRecords.FindAsync(id);
+            var record =  _context.MedicalRecords.Find(id);
             if (record == null)
                 throw new KeyNotFoundException("Không tìm thấy hồ sơ y tế.");
             _context.MedicalRecords.Remove(record);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }

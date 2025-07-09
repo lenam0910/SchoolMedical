@@ -7,12 +7,28 @@
       "RelativeMoniker": "D:0:0:{E4FAE8C0-C184-4057-AED9-FC2EABD87046}|SchoolMedicalWPF\\SchoolMedicalWPF.csproj|solutionrelative:schoolmedicalwpf\\services\\chatbotai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E4FAE8C0-C184-4057-AED9-FC2EABD87046}|SchoolMedicalWPF\\SchoolMedicalWPF.csproj|c:\\users\\this pc\\desktop\\schoolmedicalsystem\\schoolmedicalwpf\\dashboard.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E4FAE8C0-C184-4057-AED9-FC2EABD87046}|SchoolMedicalWPF\\SchoolMedicalWPF.csproj|solutionrelative:schoolmedicalwpf\\dashboard.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E4FAE8C0-C184-4057-AED9-FC2EABD87046}|SchoolMedicalWPF\\SchoolMedicalWPF.csproj|c:\\users\\this pc\\desktop\\schoolmedicalsystem\\schoolmedicalwpf\\pages\\documentpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4FAE8C0-C184-4057-AED9-FC2EABD87046}|SchoolMedicalWPF\\SchoolMedicalWPF.csproj|solutionrelative:schoolmedicalwpf\\pages\\documentpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E4FAE8C0-C184-4057-AED9-FC2EABD87046}|SchoolMedicalWPF\\SchoolMedicalWPF.csproj|c:\\users\\this pc\\desktop\\schoolmedicalsystem\\schoolmedicalwpf\\dashboard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{E4FAE8C0-C184-4057-AED9-FC2EABD87046}|SchoolMedicalWPF\\SchoolMedicalWPF.csproj|solutionrelative:schoolmedicalwpf\\dashboard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{E4FAE8C0-C184-4057-AED9-FC2EABD87046}|SchoolMedicalWPF\\SchoolMedicalWPF.csproj|c:\\users\\this pc\\desktop\\schoolmedicalsystem\\schoolmedicalwpf\\pages\\staffpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{E4FAE8C0-C184-4057-AED9-FC2EABD87046}|SchoolMedicalWPF\\SchoolMedicalWPF.csproj|solutionrelative:schoolmedicalwpf\\pages\\staffpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4FAE8C0-C184-4057-AED9-FC2EABD87046}|SchoolMedicalWPF\\SchoolMedicalWPF.csproj|c:\\users\\this pc\\desktop\\schoolmedicalsystem\\schoolmedicalwpf\\pages\\staffpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4FAE8C0-C184-4057-AED9-FC2EABD87046}|SchoolMedicalWPF\\SchoolMedicalWPF.csproj|solutionrelative:schoolmedicalwpf\\pages\\staffpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4FAE8C0-C184-4057-AED9-FC2EABD87046}|SchoolMedicalWPF\\SchoolMedicalWPF.csproj|c:\\users\\this pc\\desktop\\schoolmedicalsystem\\schoolmedicalwpf\\pages\\studentpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{E4FAE8C0-C184-4057-AED9-FC2EABD87046}|SchoolMedicalWPF\\SchoolMedicalWPF.csproj|solutionrelative:schoolmedicalwpf\\pages\\studentpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4FAE8C0-C184-4057-AED9-FC2EABD87046}|SchoolMedicalWPF\\SchoolMedicalWPF.csproj|c:\\users\\this pc\\desktop\\schoolmedicalsystem\\schoolmedicalwpf\\services\\emailsenderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4FAE8C0-C184-4057-AED9-FC2EABD87046}|SchoolMedicalWPF\\SchoolMedicalWPF.csproj|solutionrelative:schoolmedicalwpf\\services\\emailsenderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E4FAE8C0-C184-4057-AED9-FC2EABD87046}|SchoolMedicalWPF\\SchoolMedicalWPF.csproj|c:\\users\\this pc\\desktop\\schoolmedicalsystem\\schoolmedicalwpf\\pages\\studentpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E4FAE8C0-C184-4057-AED9-FC2EABD87046}|SchoolMedicalWPF\\SchoolMedicalWPF.csproj|solutionrelative:schoolmedicalwpf\\pages\\studentpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,32 +50,83 @@
               "RelativeToolTip": "SchoolMedicalWPF\\Services\\ChatBotAI.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T16:19:41.456Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Dashboard.xaml",
-              "DocumentMoniker": "C:\\Users\\THIS PC\\Desktop\\SchoolMedicalSystem\\SchoolMedicalWPF\\Dashboard.xaml",
-              "RelativeDocumentMoniker": "SchoolMedicalWPF\\Dashboard.xaml",
-              "ToolTip": "C:\\Users\\THIS PC\\Desktop\\SchoolMedicalSystem\\SchoolMedicalWPF\\Dashboard.xaml",
-              "RelativeToolTip": "SchoolMedicalWPF\\Dashboard.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-07-09T16:04:29.718Z",
+              "WhenOpened": "2025-07-09T17:29:40.735Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Dashboard.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\THIS PC\\Desktop\\SchoolMedicalSystem\\SchoolMedicalWPF\\Dashboard.xaml.cs",
-              "RelativeDocumentMoniker": "SchoolMedicalWPF\\Dashboard.xaml.cs",
-              "ToolTip": "C:\\Users\\THIS PC\\Desktop\\SchoolMedicalSystem\\SchoolMedicalWPF\\Dashboard.xaml.cs",
-              "RelativeToolTip": "SchoolMedicalWPF\\Dashboard.xaml.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAADwv2QAAAABAAAAAAAAAA==",
+              "Title": "DocumentPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\THIS PC\\Desktop\\SchoolMedicalSystem\\SchoolMedicalWPF\\Pages\\DocumentPage.xaml.cs",
+              "RelativeDocumentMoniker": "SchoolMedicalWPF\\Pages\\DocumentPage.xaml.cs",
+              "ToolTip": "C:\\Users\\THIS PC\\Desktop\\SchoolMedicalSystem\\SchoolMedicalWPF\\Pages\\DocumentPage.xaml.cs",
+              "RelativeToolTip": "SchoolMedicalWPF\\Pages\\DocumentPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-09T16:04:17.837Z",
+              "WhenOpened": "2025-07-09T17:28:55.551Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "StaffPage.xaml",
+              "DocumentMoniker": "C:\\Users\\THIS PC\\Desktop\\SchoolMedicalSystem\\SchoolMedicalWPF\\Pages\\StaffPage.xaml",
+              "RelativeDocumentMoniker": "SchoolMedicalWPF\\Pages\\StaffPage.xaml",
+              "ToolTip": "C:\\Users\\THIS PC\\Desktop\\SchoolMedicalSystem\\SchoolMedicalWPF\\Pages\\StaffPage.xaml",
+              "RelativeToolTip": "SchoolMedicalWPF\\Pages\\StaffPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-07-09T17:28:26.547Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "StaffPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\THIS PC\\Desktop\\SchoolMedicalSystem\\SchoolMedicalWPF\\Pages\\StaffPage.xaml.cs",
+              "RelativeDocumentMoniker": "SchoolMedicalWPF\\Pages\\StaffPage.xaml.cs",
+              "ToolTip": "C:\\Users\\THIS PC\\Desktop\\SchoolMedicalSystem\\SchoolMedicalWPF\\Pages\\StaffPage.xaml.cs",
+              "RelativeToolTip": "SchoolMedicalWPF\\Pages\\StaffPage.xaml.cs",
+              "ViewState": "AgIAAIkAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T17:28:21.508Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EmailSenderService.cs",
+              "DocumentMoniker": "C:\\Users\\THIS PC\\Desktop\\SchoolMedicalSystem\\SchoolMedicalWPF\\Services\\EmailSenderService.cs",
+              "RelativeDocumentMoniker": "SchoolMedicalWPF\\Services\\EmailSenderService.cs",
+              "ToolTip": "C:\\Users\\THIS PC\\Desktop\\SchoolMedicalSystem\\SchoolMedicalWPF\\Services\\EmailSenderService.cs",
+              "RelativeToolTip": "SchoolMedicalWPF\\Services\\EmailSenderService.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAGUAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T17:25:54.451Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "StudentPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\THIS PC\\Desktop\\SchoolMedicalSystem\\SchoolMedicalWPF\\Pages\\StudentPage.xaml.cs",
+              "RelativeDocumentMoniker": "SchoolMedicalWPF\\Pages\\StudentPage.xaml.cs",
+              "ToolTip": "C:\\Users\\THIS PC\\Desktop\\SchoolMedicalSystem\\SchoolMedicalWPF\\Pages\\StudentPage.xaml.cs",
+              "RelativeToolTip": "SchoolMedicalWPF\\Pages\\StudentPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T17:22:15.763Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "StudentPage.xaml",
+              "DocumentMoniker": "C:\\Users\\THIS PC\\Desktop\\SchoolMedicalSystem\\SchoolMedicalWPF\\Pages\\StudentPage.xaml",
+              "RelativeDocumentMoniker": "SchoolMedicalWPF\\Pages\\StudentPage.xaml",
+              "ToolTip": "C:\\Users\\THIS PC\\Desktop\\SchoolMedicalSystem\\SchoolMedicalWPF\\Pages\\StudentPage.xaml",
+              "RelativeToolTip": "SchoolMedicalWPF\\Pages\\StudentPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-07-09T17:22:10.331Z",
               "EditorCaption": ""
             }
           ]

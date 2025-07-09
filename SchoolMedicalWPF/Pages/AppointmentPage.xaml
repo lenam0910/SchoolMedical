@@ -12,15 +12,26 @@
         <Border Grid.Row="0" Background="{StaticResource CardBackground}" CornerRadius="10" Padding="15" Margin="0,0,0,15">
             <StackPanel>
                 <TextBlock Text="Thông tin lịch hẹn" Style="{StaticResource CustomTextBlock}" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
-                <ComboBox x:Name="StudentComboBox" Margin="0,5" FontFamily="Segoe UI" FontSize="14" DisplayMemberPath="FullName"/>
-                <ComboBox x:Name="StaffComboBox" Margin="0,5" FontFamily="Segoe UI" FontSize="14" DisplayMemberPath="FullName"/>
-                <DatePicker x:Name="AppointmentDatePicker" Margin="0,5" FontFamily="Segoe UI" FontSize="14"/>
-                <TextBox x:Name="ReasonTextBox" Style="{StaticResource CustomTextBox}" Margin="0,5" Tag="Lý do"/>
-                <ComboBox x:Name="StatusComboBox" Margin="0,5" FontFamily="Segoe UI" FontSize="14">
+
+                <TextBlock Text="Học sinh" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
+                <ComboBox x:Name="StudentComboBox" Margin="0,0,0,5" FontFamily="Segoe UI" FontSize="14" DisplayMemberPath="FullName"/>
+
+                <TextBlock Text="Nhân viên" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
+                <ComboBox x:Name="StaffComboBox" Margin="0,0,0,5" FontFamily="Segoe UI" FontSize="14" DisplayMemberPath="FullName"/>
+
+                <TextBlock Text="Ngày hẹn" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
+                <DatePicker x:Name="AppointmentDatePicker" Margin="0,0,0,5" FontFamily="Segoe UI" FontSize="14"/>
+
+                <TextBlock Text="Lý do" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
+                <TextBox x:Name="ReasonTextBox" Style="{StaticResource CustomTextBox}" Margin="0,0,0,5" Tag="Lý do"/>
+
+                <TextBlock Text="Trạng thái" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
+                <ComboBox x:Name="StatusComboBox" Margin="0,0,0,5" FontFamily="Segoe UI" FontSize="14">
                     <ComboBoxItem Content="Scheduled"/>
                     <ComboBoxItem Content="Completed"/>
                     <ComboBoxItem Content="Cancelled"/>
                 </ComboBox>
+
                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                     <Button Content="Thêm" Click="AddAppointment" Style="{StaticResource CustomButton}" Margin="0,0,10,0" Width="100"/>
                     <Button Content="Cập nhật" Click="UpdateAppointment" Style="{StaticResource CustomButton}" Margin="0,0,10,0" Width="100"/>

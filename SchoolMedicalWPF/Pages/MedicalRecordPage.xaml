@@ -12,10 +12,19 @@
         <Border Grid.Row="0" Background="{StaticResource CardBackground}" CornerRadius="10" Padding="15" Margin="0,0,0,15">
             <StackPanel>
                 <TextBlock Text="Thông tin hồ sơ y tế" Style="{StaticResource CustomTextBlock}" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
-                <ComboBox x:Name="StudentComboBox" Margin="0,5" FontFamily="Segoe UI" FontSize="14" DisplayMemberPath="FullName"/>
-                <TextBox x:Name="ConditionTextBox" Style="{StaticResource CustomTextBox}" Margin="0,5" Tag="Tình trạng"/>
-                <TextBox x:Name="AllergiesTextBox" Style="{StaticResource CustomTextBox}" Margin="0,5" Tag="Dị ứng"/>
-                <TextBox x:Name="NotesTextBox" Style="{StaticResource CustomTextBox}" Margin="0,5" Tag="Ghi chú" AcceptsReturn="True" Height="60"/>
+
+                <TextBlock Text="Học sinh" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
+                <ComboBox x:Name="StudentComboBox" Margin="0,0,0,5" FontFamily="Segoe UI" FontSize="14" DisplayMemberPath="FullName"/>
+
+                <TextBlock Text="Tình trạng" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
+                <TextBox x:Name="ConditionTextBox" Style="{StaticResource CustomTextBox}" Margin="0,0,0,5" Tag="Tình trạng"/>
+
+                <TextBlock Text="Dị ứng" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
+                <TextBox x:Name="AllergiesTextBox" Style="{StaticResource CustomTextBox}" Margin="0,0,0,5" Tag="Dị ứng"/>
+
+                <TextBlock Text="Ghi chú" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
+                <TextBox x:Name="NotesTextBox" Style="{StaticResource CustomTextBox}" Margin="0,0,0,5" Tag="Ghi chú" AcceptsReturn="True" Height="60"/>
+
                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                     <Button Content="Thêm" Click="AddRecord" Style="{StaticResource CustomButton}" Margin="0,0,10,0" Width="100"/>
                     <Button Content="Cập nhật" Click="UpdateRecord" Style="{StaticResource CustomButton}" Margin="0,0,10,0" Width="100"/>

@@ -11,6 +11,8 @@ public partial class Staff
 
     public string LastName { get; set; } = null!;
 
+    public string FullName => $"{LastName} {FirstName}";
+
     public string Role { get; set; } = null!;
 
     public string Username { get; set; } = null!;

@@ -19,21 +19,17 @@ namespace SchoolMedicalWPF.Pages
         public MedicalRecordPage()
         {
             InitializeComponent();
-           
             _recordService = new MedicalRecordService();
             _studentService = new StudentService();
             LoadData();
         }
 
-
-        private async void LoadData()
+        private void LoadData()
         {
             try
             {
-                RecordsDataGrid.ItemsSource = await _recordService.GetAllAsync();
-                var students = await _studentService.GetAllAsync();
-                StudentComboBox.ItemsSource = students;
-                StudentComboBox.DisplayMemberPath = "FullName";
+                RecordsDataGrid.ItemsSource = _recordService.GetAllAsync();
+                StudentComboBox.ItemsSource = _studentService.GetAllAsync();
             }
             catch (Exception ex)
             {
@@ -41,7 +37,7 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void AddRecord(object sender, RoutedEventArgs e)
+        private void AddRecord(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -57,7 +53,7 @@ namespace SchoolMedicalWPF.Pages
                     Notes = NotesTextBox.Text,
                     RecordedDate = DateTime.Now
                 };
-                await _recordService.AddAsync(record);
+                _recordService.AddAsync(record);
                 LoadData();
                 ClearInputs();
                 MessageBox.Show("Thêm hồ sơ y tế thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -68,7 +64,7 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void UpdateRecord(object sender, RoutedEventArgs e)
+        private void UpdateRecord(object sender, RoutedEventArgs e)
         {
             if (_selectedRecord == null)
             {
@@ -86,7 +82,7 @@ namespace SchoolMedicalWPF.Pages
                 _selectedRecord.Condition = ConditionTextBox.Text;
                 _selectedRecord.Allergies = AllergiesTextBox.Text;
                 _selectedRecord.Notes = NotesTextBox.Text;
-                await _recordService.UpdateAsync(_selectedRecord);
+                _recordService.UpdateAsync(_selectedRecord);
                 LoadData();
                 ClearInputs();
                 MessageBox.Show("Cập nhật hồ sơ y tế thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -97,7 +93,7 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void DeleteRecord(object sender, RoutedEventArgs e)
+        private void DeleteRecord(object sender, RoutedEventArgs e)
         {
             if (_selectedRecord == null)
             {
@@ -110,7 +106,7 @@ namespace SchoolMedicalWPF.Pages
             {
                 try
                 {
-                    await _recordService.DeleteAsync(_selectedRecord.RecordId);
+                    _recordService.DeleteAsync(_selectedRecord.RecordId);
                     LoadData();
                     ClearInputs();
                     MessageBox.Show("Xóa hồ sơ y tế thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -127,7 +123,10 @@ namespace SchoolMedicalWPF.Pages
             _selectedRecord = RecordsDataGrid.SelectedItem as MedicalRecord;
             if (_selectedRecord != null)
             {
-                StudentComboBox.SelectedItem = _selectedRecord.Student;
+                // Tìm Student trong ItemsSource của ComboBox dựa trên StudentId
+                var selectedStudent = (StudentComboBox.ItemsSource as IEnumerable<Student>)?.FirstOrDefault(s => s.StudentId == _selectedRecord.StudentId);
+                StudentComboBox.SelectedItem = selectedStudent;
+
                 ConditionTextBox.Text = _selectedRecord.Condition;
                 AllergiesTextBox.Text = _selectedRecord.Allergies;
                 NotesTextBox.Text = _selectedRecord.Notes;

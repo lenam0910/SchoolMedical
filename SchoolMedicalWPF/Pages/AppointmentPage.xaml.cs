@@ -20,22 +20,19 @@ namespace SchoolMedicalWPF.Pages
         public AppointmentPage()
         {
             InitializeComponent();
-      
             _appointmentService = new AppointmentService();
             _studentService = new StudentService();
             _staffService = new StaffService();
             LoadData();
         }
 
-       
-
-        private async void LoadData()
+        private  void LoadData()
         {
             try
             {
-                AppointmentsDataGrid.ItemsSource = await _appointmentService.GetAllAsync();
-                StudentComboBox.ItemsSource = await _studentService.GetAllAsync();
-                StaffComboBox.ItemsSource = await _staffService.GetAllAsync();
+                AppointmentsDataGrid.ItemsSource =  _appointmentService.GetAllAsync();
+                StudentComboBox.ItemsSource =  _studentService.GetAllAsync();
+                StaffComboBox.ItemsSource =  _staffService.GetAllAsync();
             }
             catch (Exception ex)
             {
@@ -43,7 +40,7 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void AddAppointment(object sender, RoutedEventArgs e)
+        private  void AddAppointment(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -61,7 +58,7 @@ namespace SchoolMedicalWPF.Pages
                     Status = (StatusComboBox.SelectedItem as ComboBoxItem)?.Content.ToString() ?? "Scheduled",
                     CreatedAt = DateTime.Now
                 };
-                await _appointmentService.AddAsync(appointment);
+                 _appointmentService.AddAsync(appointment);
                 LoadData();
                 ClearInputs();
                 MessageBox.Show("Thêm lịch hẹn thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -72,7 +69,7 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void UpdateAppointment(object sender, RoutedEventArgs e)
+        private  void UpdateAppointment(object sender, RoutedEventArgs e)
         {
             if (_selectedAppointment == null)
             {
@@ -92,7 +89,7 @@ namespace SchoolMedicalWPF.Pages
                 _selectedAppointment.AppointmentDate = AppointmentDatePicker.SelectedDate ?? DateTime.Now;
                 _selectedAppointment.Reason = ReasonTextBox.Text;
                 _selectedAppointment.Status = (StatusComboBox.SelectedItem as ComboBoxItem)?.Content.ToString() ?? "Scheduled";
-                await _appointmentService.UpdateAsync(_selectedAppointment);
+                 _appointmentService.UpdateAsync(_selectedAppointment);
                 LoadData();
                 ClearInputs();
                 MessageBox.Show("Cập nhật lịch hẹn thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -103,7 +100,7 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void DeleteAppointment(object sender, RoutedEventArgs e)
+        private  void DeleteAppointment(object sender, RoutedEventArgs e)
         {
             if (_selectedAppointment == null)
             {
@@ -116,7 +113,7 @@ namespace SchoolMedicalWPF.Pages
             {
                 try
                 {
-                    await _appointmentService.DeleteAsync(_selectedAppointment.AppointmentId);
+                     _appointmentService.DeleteAsync(_selectedAppointment.AppointmentId);
                     LoadData();
                     ClearInputs();
                     MessageBox.Show("Xóa lịch hẹn thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -133,8 +130,14 @@ namespace SchoolMedicalWPF.Pages
             _selectedAppointment = AppointmentsDataGrid.SelectedItem as Appointment;
             if (_selectedAppointment != null)
             {
-                StudentComboBox.SelectedItem = _selectedAppointment.Student;
-                StaffComboBox.SelectedItem = _selectedAppointment.Staff;
+                // Tìm Student trong ItemsSource của ComboBox dựa trên StudentId
+                var selectedStudent = (StudentComboBox.ItemsSource as IEnumerable<Student>)?.FirstOrDefault(s => s.StudentId == _selectedAppointment.StudentId);
+                StudentComboBox.SelectedItem = selectedStudent;
+
+                // Tương tự cho Staff
+                var selectedStaff = (StaffComboBox.ItemsSource as IEnumerable<Staff>)?.FirstOrDefault(s => s.StaffId == _selectedAppointment.StaffId);
+                StaffComboBox.SelectedItem = selectedStaff;
+
                 AppointmentDatePicker.SelectedDate = _selectedAppointment.AppointmentDate;
                 ReasonTextBox.Text = _selectedAppointment.Reason;
                 StatusComboBox.SelectedItem = StatusComboBox.Items.Cast<ComboBoxItem>().FirstOrDefault(i => i.Content.ToString() == _selectedAppointment.Status);

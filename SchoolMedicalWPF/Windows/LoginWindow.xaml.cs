@@ -22,11 +22,11 @@ namespace SchoolMedicalWPF.Windows
 
  
 
-        private async void Login_Click(object sender, RoutedEventArgs e)
+        private  void Login_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                var staff = await _authService.LoginAsync(UsernameTextBox.Text, PasswordBox.Password);
+                var staff =  _authService.LoginAsync(UsernameTextBox.Text, PasswordBox.Password);
                 var dashboard = new Dashboard(staff);
                 dashboard.Show();
                 Close();

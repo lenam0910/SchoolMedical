@@ -15,39 +15,39 @@ namespace SchoolMedicalWPF.Services
             _context = new SchoolMedicalDbContext();
         }
 
-        public async Task<List<Notification>> GetAllAsync()
+        public List<Notification> GetAllAsync()
         {
-            return await _context.Notifications.Include(n => n.Staff).ToListAsync();
+            return  _context.Notifications.Include(n => n.Staff).ToList();
         }
 
-        public async Task<Notification> GetByIdAsync(int id)
+        public Notification GetByIdAsync(int id)
         {
-            return await _context.Notifications.FindAsync(id);
+            return  _context.Notifications.Find(id);
         }
 
-        public async Task AddAsync(Notification notification)
+        public void AddAsync(Notification notification)
         {
             if (notification.StaffId <= 0 || string.IsNullOrWhiteSpace(notification.Message))
                 throw new ArgumentException("ID nhân viên hoặc thông điệp không hợp lệ.");
             _context.Notifications.Add(notification);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
-        public async Task UpdateAsync(Notification notification)
+        public void UpdateAsync(Notification notification)
         {
             if (notification.StaffId <= 0 || string.IsNullOrWhiteSpace(notification.Message))
                 throw new ArgumentException("ID nhân viên hoặc thông điệp không hợp lệ.");
             _context.Notifications.Update(notification);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
-        public async Task DeleteAsync(int id)
+        public void DeleteAsync(int id)
         {
-            var notification = await _context.Notifications.FindAsync(id);
+            var notification =  _context.Notifications.Find(id);
             if (notification == null)
                 throw new KeyNotFoundException("Không tìm thấy thông báo.");
             _context.Notifications.Remove(notification);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }

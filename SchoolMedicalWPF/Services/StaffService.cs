@@ -16,39 +16,39 @@ namespace SchoolMedicalWPF.Services
 
         }
 
-        public async Task<List<Staff>> GetAllAsync()
+        public List<Staff> GetAllAsync()
         {
-            return await _context.Staff.ToListAsync();
+            return  _context.Staff.ToList();
         }
 
-        public async Task<Staff> GetByIdAsync(int id)
+        public Staff GetByIdAsync(int id)
         {
-            return await _context.Staff.FindAsync(id);
+            return  _context.Staff.Find(id);
         }
 
-        public async Task AddAsync(Staff staff)
+        public  void AddAsync(Staff staff)
         {
             if (string.IsNullOrWhiteSpace(staff.FirstName) || string.IsNullOrWhiteSpace(staff.LastName) || string.IsNullOrWhiteSpace(staff.Username))
                 throw new ArgumentException("Họ, tên và tên đăng nhập không được để trống.");
             _context.Staff.Add(staff);
-            await _context.SaveChangesAsync();
+             _context.SaveChanges();
         }
 
-        public async Task UpdateAsync(Staff staff)
+        public void UpdateAsync(Staff staff)
         {
             if (string.IsNullOrWhiteSpace(staff.FirstName) || string.IsNullOrWhiteSpace(staff.LastName) || string.IsNullOrWhiteSpace(staff.Username))
                 throw new ArgumentException("Họ, tên và tên đăng nhập không được để trống.");
             _context.Staff.Update(staff);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
-        public async Task DeleteAsync(int id)
+        public  void DeleteAsync(int id)
         {
-            var staff = await _context.Staff.FindAsync(id);
+            var staff =  _context.Staff.Find(id);
             if (staff == null)
                 throw new KeyNotFoundException("Không tìm thấy nhân viên.");
             _context.Staff.Remove(staff);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }

@@ -16,26 +16,22 @@ namespace SchoolMedicalWPF.Pages
         private readonly StudentService _studentService;
         private readonly StaffService _staffService;
         private HealthIncident _selectedIncident;
-
         public HealthIncidentPage()
         {
             InitializeComponent();
-           
             _incidentService = new HealthIncidentService();
             _studentService = new StudentService();
             _staffService = new StaffService();
             LoadData();
         }
 
-        
-
-        private async void LoadData()
+        private void LoadData()
         {
             try
             {
-                IncidentsDataGrid.ItemsSource = await _incidentService.GetAllAsync();
-                StudentComboBox.ItemsSource = await _studentService.GetAllAsync();
-                StaffComboBox.ItemsSource = await _staffService.GetAllAsync();
+                IncidentsDataGrid.ItemsSource = _incidentService.GetAllAsync();
+                StudentComboBox.ItemsSource = _studentService.GetAllAsync();
+                StaffComboBox.ItemsSource = _staffService.GetAllAsync();
             }
             catch (Exception ex)
             {
@@ -43,7 +39,7 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void AddIncident(object sender, RoutedEventArgs e)
+        private void AddIncident(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -61,7 +57,7 @@ namespace SchoolMedicalWPF.Pages
                     ActionTaken = ActionTakenTextBox.Text,
                     CreatedAt = DateTime.Now
                 };
-                await _incidentService.AddAsync(incident);
+                _incidentService.AddAsync(incident);
                 LoadData();
                 ClearInputs();
                 MessageBox.Show("Thêm sự cố sức khỏe thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -72,7 +68,7 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void UpdateIncident(object sender, RoutedEventArgs e)
+        private void UpdateIncident(object sender, RoutedEventArgs e)
         {
             if (_selectedIncident == null)
             {
@@ -92,7 +88,7 @@ namespace SchoolMedicalWPF.Pages
                 _selectedIncident.IncidentDate = IncidentDatePicker.SelectedDate ?? DateTime.Now;
                 _selectedIncident.Description = DescriptionTextBox.Text;
                 _selectedIncident.ActionTaken = ActionTakenTextBox.Text;
-                await _incidentService.UpdateAsync(_selectedIncident);
+                _incidentService.UpdateAsync(_selectedIncident);
                 LoadData();
                 ClearInputs();
                 MessageBox.Show("Cập nhật sự cố sức khỏe thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -103,7 +99,7 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void DeleteIncident(object sender, RoutedEventArgs e)
+        private void DeleteIncident(object sender, RoutedEventArgs e)
         {
             if (_selectedIncident == null)
             {
@@ -116,7 +112,7 @@ namespace SchoolMedicalWPF.Pages
             {
                 try
                 {
-                    await _incidentService.DeleteAsync(_selectedIncident.IncidentId);
+                    _incidentService.DeleteAsync(_selectedIncident.IncidentId);
                     LoadData();
                     ClearInputs();
                     MessageBox.Show("Xóa sự cố sức khỏe thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -133,8 +129,14 @@ namespace SchoolMedicalWPF.Pages
             _selectedIncident = IncidentsDataGrid.SelectedItem as HealthIncident;
             if (_selectedIncident != null)
             {
-                StudentComboBox.SelectedItem = _selectedIncident.Student;
-                StaffComboBox.SelectedItem = _selectedIncident.Staff;
+                // Tìm Student trong ItemsSource của ComboBox dựa trên StudentId
+                var selectedStudent = (StudentComboBox.ItemsSource as IEnumerable<Student>)?.FirstOrDefault(s => s.StudentId == _selectedIncident.StudentId);
+                StudentComboBox.SelectedItem = selectedStudent;
+
+                // Tìm Staff trong ItemsSource của ComboBox dựa trên StaffId
+                var selectedStaff = (StaffComboBox.ItemsSource as IEnumerable<Staff>)?.FirstOrDefault(s => s.StaffId == _selectedIncident.StaffId);
+                StaffComboBox.SelectedItem = selectedStaff;
+
                 IncidentDatePicker.SelectedDate = _selectedIncident.IncidentDate;
                 DescriptionTextBox.Text = _selectedIncident.Description;
                 ActionTakenTextBox.Text = _selectedIncident.ActionTaken;
@@ -156,4 +158,5 @@ namespace SchoolMedicalWPF.Pages
             _selectedIncident = null;
         }
     }
+
 }

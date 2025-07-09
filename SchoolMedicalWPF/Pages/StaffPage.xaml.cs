@@ -17,18 +17,15 @@ namespace SchoolMedicalWPF.Pages
         public StaffPage()
         {
             InitializeComponent();
-            
             _staffService = new StaffService();
             LoadStaff();
         }
 
-        
-
-        private async void LoadStaff()
+        private void LoadStaff()
         {
             try
             {
-                StaffDataGrid.ItemsSource = await _staffService.GetAllAsync();
+                StaffDataGrid.ItemsSource = _staffService.GetAllAsync();
             }
             catch (Exception ex)
             {
@@ -36,7 +33,7 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void AddStaff(object sender, RoutedEventArgs e)
+        private void AddStaff(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -50,7 +47,7 @@ namespace SchoolMedicalWPF.Pages
                     Email = EmailTextBox.Text,
                     Contact = ContactTextBox.Text
                 };
-                await _staffService.AddAsync(staff);
+                _staffService.AddAsync(staff);
                 LoadStaff();
                 ClearInputs();
                 MessageBox.Show("Thêm nhân viên thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -61,7 +58,7 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void UpdateStaff(object sender, RoutedEventArgs e)
+        private void UpdateStaff(object sender, RoutedEventArgs e)
         {
             if (_selectedStaff == null)
             {
@@ -78,7 +75,7 @@ namespace SchoolMedicalWPF.Pages
                 _selectedStaff.PasswordHash = PasswordHashTextBox.Text;
                 _selectedStaff.Email = EmailTextBox.Text;
                 _selectedStaff.Contact = ContactTextBox.Text;
-                await _staffService.UpdateAsync(_selectedStaff);
+                _staffService.UpdateAsync(_selectedStaff);
                 LoadStaff();
                 ClearInputs();
                 MessageBox.Show("Cập nhật nhân viên thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -89,7 +86,7 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void DeleteStaff(object sender, RoutedEventArgs e)
+        private void DeleteStaff(object sender, RoutedEventArgs e)
         {
             if (_selectedStaff == null)
             {
@@ -102,7 +99,7 @@ namespace SchoolMedicalWPF.Pages
             {
                 try
                 {
-                    await _staffService.DeleteAsync(_selectedStaff.StaffId);
+                    _staffService.DeleteAsync(_selectedStaff.StaffId);
                     LoadStaff();
                     ClearInputs();
                     MessageBox.Show("Xóa nhân viên thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);

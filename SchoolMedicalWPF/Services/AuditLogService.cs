@@ -16,39 +16,39 @@ namespace SchoolMedicalWPF.Services
 
         }
 
-        public async Task<List<AuditLog>> GetAllAsync()
+        public  List<AuditLog> GetAllAsync()
         {
-            return await _context.AuditLogs.Include(a => a.Staff).ToListAsync();
+            return  _context.AuditLogs.Include(a => a.Staff).ToList();
         }
 
-        public async Task<AuditLog> GetByIdAsync(int id)
+        public AuditLog GetByIdAsync(int id)
         {
-            return await _context.AuditLogs.FindAsync(id);
+            return _context.AuditLogs.Find(id);
         }
 
-        public async Task AddAsync(AuditLog log)
+        public void AddAsync(AuditLog log)
         {
             if (log.StaffId <= 0 || string.IsNullOrWhiteSpace(log.Action))
                 throw new ArgumentException("ID nhân viên hoặc hành động không hợp lệ.");
             _context.AuditLogs.Add(log);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
-        public async Task UpdateAsync(AuditLog log)
+        public void UpdateAsync(AuditLog log)
         {
             if (log.StaffId <= 0 || string.IsNullOrWhiteSpace(log.Action))
                 throw new ArgumentException("ID nhân viên hoặc hành động không hợp lệ.");
             _context.AuditLogs.Update(log);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
-        public async Task DeleteAsync(int id)
+        public void DeleteAsync(int id)
         {
-            var log = await _context.AuditLogs.FindAsync(id);
+            var log =  _context.AuditLogs.Find(id);
             if (log == null)
                 throw new KeyNotFoundException("Không tìm thấy nhật ký kiểm tra.");
             _context.AuditLogs.Remove(log);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }

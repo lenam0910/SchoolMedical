@@ -21,11 +21,11 @@ namespace SchoolMedicalWPF.Windows
 
     
 
-        private async void SendResetCode_Click(object sender, RoutedEventArgs e)
+        private  void SendResetCode_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                var success = await _authService.RequestPasswordResetAsync(EmailTextBox.Text);
+                var success =  _authService.RequestPasswordResetAsync(EmailTextBox.Text);
                 if (success)
                     MessageBox.Show("Mã khôi phục đã được gửi tới email của bạn.", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
                 else

@@ -12,7 +12,7 @@ namespace WPF.User
     public class ChatBotAI
     {
         private readonly StringBuilder chatHistory; // Lưu lịch sử hội thoại
-        private readonly string apiKey = "AIzaSyAGvATwDdavDTN-7fk6lsv2mZroP94cJaM";
+        private readonly string apiKey = "AIzaSyA0jxhT1iJR6lhiX0-bJPU7eXZpC4iIyUA";
 
         public ChatBotAI()
         {

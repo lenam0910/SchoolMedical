@@ -16,14 +16,14 @@ namespace SchoolMedicalWPF.Services
 
         }
 
-        public async Task<List<Document>> GetAllAsync()
+        public  List<Document> GetAllAsync()
         {
-            return await _context.Documents.Include(d => d.Student).Include(d => d.UploadedByNavigation).ToListAsync();
+            return  _context.Documents.Include(d => d.Student).Include(d => d.UploadedByNavigation).ToList();
         }
 
-        public async Task<Document> GetByIdAsync(int id)
+        public Document GetByIdAsync(int id)
         {
-            return await _context.Documents.FindAsync(id);
+            return  _context.Documents.Find(id);
         }
 
         public async Task AddAsync(Document document)

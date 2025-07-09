@@ -53,13 +53,16 @@
 
             <!-- Frame -->
             <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden" Background="{StaticResource CardBackground}" />
+        </Grid>
 
+        <!-- Chat Button and Popup in Canvas -->
+        <Canvas Grid.Column="1">
             <!-- Chat Button -->
-            <Button x:Name="ChatButton" Click="ChatButton_Click" Width="60" Height="60" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20" Background="#2196F3" BorderThickness="0" Content="💬" FontSize="24" Foreground="White" Cursor="Hand" />
+            <Button x:Name="ChatButton" Click="ChatButton_Click" Width="60" Height="60" Canvas.Right="20" Canvas.Bottom="20" Background="#2196F3" BorderThickness="0" Content="💬" FontSize="24" Foreground="White" Cursor="Hand" />
 
             <!-- Chat Popup -->
             <Border x:Name="ChatPopup" Background="White" Width="250" Height="360" CornerRadius="10" BorderBrush="#BDC3C7" BorderThickness="1"
-                    Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20">
+                    Visibility="Collapsed" Canvas.Right="20" Canvas.Bottom="90">
                 <StackPanel>
                     <!-- Thanh tiêu đề chứa văn bản + nút đóng -->
                     <Grid Background="#2C3E50" Height="30">
@@ -74,6 +77,6 @@
                     <Button Content="Gửi" Background="#3498DB" Foreground="White" FontSize="14" Height="30" Width="70" HorizontalAlignment="Right" Margin="3" Click="SendButton_Click"/>
                 </StackPanel>
             </Border>
-        </Grid>
+        </Canvas>
     </Grid>
 </Window>

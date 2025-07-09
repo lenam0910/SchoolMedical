@@ -12,12 +12,25 @@
         <Border Grid.Row="0" Background="{StaticResource CardBackground}" CornerRadius="10" Padding="15" Margin="0,0,0,15">
             <StackPanel>
                 <TextBlock Text="Thông tin học sinh" Style="{StaticResource CustomTextBlock}" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
-                <TextBox x:Name="FirstNameTextBox" Style="{StaticResource CustomTextBox}" Margin="0,5" Tag="Họ"/>
-                <TextBox x:Name="LastNameTextBox" Style="{StaticResource CustomTextBox}" Margin="0,5" Tag="Tên"/>
-                <DatePicker x:Name="DateOfBirthPicker" Margin="0,5" FontFamily="Segoe UI" FontSize="14"/>
-                <TextBox x:Name="GenderTextBox" Style="{StaticResource CustomTextBox}" Margin="0,5" Tag="Giới tính"/>
-                <TextBox x:Name="ClassTextBox" Style="{StaticResource CustomTextBox}" Margin="0,5" Tag="Lớp"/>
-                <TextBox x:Name="EmergencyContactTextBox" Style="{StaticResource CustomTextBox}" Margin="0,5" Tag="Liên hệ khẩn cấp"/>
+
+                <TextBlock Text="Họ" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
+                <TextBox x:Name="FirstNameTextBox" Style="{StaticResource CustomTextBox}" Margin="0,0,0,5" Tag="Họ"/>
+
+                <TextBlock Text="Tên" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
+                <TextBox x:Name="LastNameTextBox" Style="{StaticResource CustomTextBox}" Margin="0,0,0,5" Tag="Tên"/>
+
+                <TextBlock Text="Ngày sinh" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
+                <DatePicker x:Name="DateOfBirthPicker" Margin="0,0,0,5" FontFamily="Segoe UI" FontSize="14"/>
+
+                <TextBlock Text="Giới tính" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
+                <TextBox x:Name="GenderTextBox" Style="{StaticResource CustomTextBox}" Margin="0,0,0,5" Tag="Giới tính"/>
+
+                <TextBlock Text="Lớp" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
+                <TextBox x:Name="ClassTextBox" Style="{StaticResource CustomTextBox}" Margin="0,0,0,5" Tag="Lớp"/>
+
+                <TextBlock Text="Liên hệ khẩn cấp" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
+                <TextBox x:Name="EmergencyContactTextBox" Style="{StaticResource CustomTextBox}" Margin="0,0,0,5" Tag="Liên hệ khẩn cấp"/>
+
                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                     <Button Content="Thêm" Click="AddStudent" Style="{StaticResource CustomButton}" Margin="0,0,10,0" Width="100"/>
                     <Button Content="Cập nhật" Click="UpdateStudent" Style="{StaticResource CustomButton}" Margin="0,0,10,0" Width="100"/>

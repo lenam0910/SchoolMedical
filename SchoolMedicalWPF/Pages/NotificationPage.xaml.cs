@@ -24,14 +24,12 @@ namespace SchoolMedicalWPF.Pages
             LoadData();
         }
 
-       
-
-        private async void LoadData()
+        private void LoadData()
         {
             try
             {
-                NotificationsDataGrid.ItemsSource = await _notificationService.GetAllAsync();
-                StaffComboBox.ItemsSource = await _staffService.GetAllAsync();
+                NotificationsDataGrid.ItemsSource = _notificationService.GetAllAsync();
+                StaffComboBox.ItemsSource = _staffService.GetAllAsync();
             }
             catch (Exception ex)
             {
@@ -39,7 +37,7 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void AddNotification(object sender, RoutedEventArgs e)
+        private void AddNotification(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -54,7 +52,7 @@ namespace SchoolMedicalWPF.Pages
                     IsRead = IsReadCheckBox.IsChecked ?? false,
                     CreatedAt = DateTime.Now
                 };
-                await _notificationService.AddAsync(notification);
+                _notificationService.AddAsync(notification);
                 LoadData();
                 ClearInputs();
                 MessageBox.Show("Thêm thông báo thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -65,7 +63,7 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void UpdateNotification(object sender, RoutedEventArgs e)
+        private void UpdateNotification(object sender, RoutedEventArgs e)
         {
             if (_selectedNotification == null)
             {
@@ -82,7 +80,7 @@ namespace SchoolMedicalWPF.Pages
                 _selectedNotification.StaffId = selectedStaff.StaffId;
                 _selectedNotification.Message = MessageTextBox.Text;
                 _selectedNotification.IsRead = IsReadCheckBox.IsChecked ?? false;
-                await _notificationService.UpdateAsync(_selectedNotification);
+                _notificationService.UpdateAsync(_selectedNotification);
                 LoadData();
                 ClearInputs();
                 MessageBox.Show("Cập nhật thông báo thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -93,7 +91,7 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void DeleteNotification(object sender, RoutedEventArgs e)
+        private void DeleteNotification(object sender, RoutedEventArgs e)
         {
             if (_selectedNotification == null)
             {
@@ -106,7 +104,7 @@ namespace SchoolMedicalWPF.Pages
             {
                 try
                 {
-                    await _notificationService.DeleteAsync(_selectedNotification.NotificationId);
+                    _notificationService.DeleteAsync(_selectedNotification.NotificationId);
                     LoadData();
                     ClearInputs();
                     MessageBox.Show("Xóa thông báo thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -123,7 +121,10 @@ namespace SchoolMedicalWPF.Pages
             _selectedNotification = NotificationsDataGrid.SelectedItem as Notification;
             if (_selectedNotification != null)
             {
-                StaffComboBox.SelectedItem = _selectedNotification.Staff;
+                // Tìm Staff trong ItemsSource của ComboBox dựa trên StaffId
+                var selectedStaff = (StaffComboBox.ItemsSource as IEnumerable<Staff>)?.FirstOrDefault(s => s.StaffId == _selectedNotification.StaffId);
+                StaffComboBox.SelectedItem = selectedStaff;
+
                 MessageTextBox.Text = _selectedNotification.Message;
                 IsReadCheckBox.IsChecked = _selectedNotification.IsRead;
             }

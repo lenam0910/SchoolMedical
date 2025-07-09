@@ -21,13 +21,11 @@ namespace SchoolMedicalWPF.Pages
             LoadStudents();
         }
 
-        
-
-        private async void LoadStudents()
+        private void LoadStudents()
         {
             try
             {
-                StudentsDataGrid.ItemsSource = await _studentService.GetAllAsync();
+                StudentsDataGrid.ItemsSource = _studentService.GetAllAsync();
             }
             catch (Exception ex)
             {
@@ -35,23 +33,24 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void AddStudent(object sender, RoutedEventArgs e)
+        private void AddStudent(object sender, RoutedEventArgs e)
         {
             try
             {
                 var selectedDate = DateOfBirthPicker.SelectedDate;
+                if (!selectedDate.HasValue)
+                    throw new ArgumentException("Vui lòng chọn ngày sinh.");
+
                 var student = new Student
                 {
                     FirstName = FirstNameTextBox.Text,
                     LastName = LastNameTextBox.Text,
-                    DateOfBirth = selectedDate.HasValue
-                        ? DateOnly.FromDateTime(selectedDate.Value)
-                        : DateOnly.FromDateTime(DateTime.Now),
+                    DateOfBirth = DateOnly.FromDateTime(selectedDate.Value),
                     Gender = GenderTextBox.Text,
                     Class = ClassTextBox.Text,
                     EmergencyContact = EmergencyContactTextBox.Text
                 };
-                await _studentService.AddAsync(student);
+                _studentService.AddAsync(student);
                 LoadStudents();
                 ClearInputs();
                 MessageBox.Show("Thêm học sinh thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -62,7 +61,7 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void UpdateStudent(object sender, RoutedEventArgs e)
+        private void UpdateStudent(object sender, RoutedEventArgs e)
         {
             if (_selectedStudent == null)
             {
@@ -72,20 +71,17 @@ namespace SchoolMedicalWPF.Pages
 
             try
             {
+                var selectedDate = DateOfBirthPicker.SelectedDate;
+                if (!selectedDate.HasValue)
+                    throw new ArgumentException("Vui lòng chọn ngày sinh.");
+
                 _selectedStudent.FirstName = FirstNameTextBox.Text;
                 _selectedStudent.LastName = LastNameTextBox.Text;
-
-                // Fix for CS0019 and CS8604
-                var selectedDate = DateOfBirthPicker.SelectedDate;
-                _selectedStudent.DateOfBirth = selectedDate.HasValue
-                    ? DateOnly.FromDateTime(selectedDate.Value)
-                    : DateOnly.FromDateTime(DateTime.Now);
-
+                _selectedStudent.DateOfBirth = DateOnly.FromDateTime(selectedDate.Value);
                 _selectedStudent.Gender = GenderTextBox.Text;
                 _selectedStudent.Class = ClassTextBox.Text;
                 _selectedStudent.EmergencyContact = EmergencyContactTextBox.Text;
-
-                await _studentService.UpdateAsync(_selectedStudent);
+                _studentService.UpdateAsync(_selectedStudent);
                 LoadStudents();
                 ClearInputs();
                 MessageBox.Show("Cập nhật học sinh thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -96,7 +92,7 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void DeleteStudent(object sender, RoutedEventArgs e)
+        private void DeleteStudent(object sender, RoutedEventArgs e)
         {
             if (_selectedStudent == null)
             {
@@ -109,7 +105,7 @@ namespace SchoolMedicalWPF.Pages
             {
                 try
                 {
-                    await _studentService.DeleteAsync(_selectedStudent.StudentId);
+                    _studentService.DeleteAsync(_selectedStudent.StudentId);
                     LoadStudents();
                     ClearInputs();
                     MessageBox.Show("Xóa học sinh thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -128,7 +124,7 @@ namespace SchoolMedicalWPF.Pages
             {
                 FirstNameTextBox.Text = _selectedStudent.FirstName;
                 LastNameTextBox.Text = _selectedStudent.LastName;
-                DateOfBirthPicker.SelectedDate =DateTime.Parse(_selectedStudent.DateOfBirth.ToString());
+                DateOfBirthPicker.SelectedDate = _selectedStudent.DateOfBirth.ToDateTime(new TimeOnly(0, 0));
                 GenderTextBox.Text = _selectedStudent.Gender;
                 ClassTextBox.Text = _selectedStudent.Class;
                 EmergencyContactTextBox.Text = _selectedStudent.EmergencyContact;

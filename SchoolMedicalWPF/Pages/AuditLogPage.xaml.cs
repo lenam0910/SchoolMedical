@@ -19,20 +19,17 @@ namespace SchoolMedicalWPF.Pages
         public AuditLogPage()
         {
             InitializeComponent();
-          
             _logService = new AuditLogService();
             _staffService = new StaffService();
             LoadData();
         }
 
-        
-
-        private async void LoadData()
+        private  void LoadData()
         {
             try
             {
-                LogsDataGrid.ItemsSource = await _logService.GetAllAsync();
-                StaffComboBox.ItemsSource = await _staffService.GetAllAsync();
+                LogsDataGrid.ItemsSource =  _logService.GetAllAsync();
+                StaffComboBox.ItemsSource =  _staffService.GetAllAsync();
             }
             catch (Exception ex)
             {
@@ -40,7 +37,7 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void AddLog(object sender, RoutedEventArgs e)
+        private  void AddLog(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -55,7 +52,7 @@ namespace SchoolMedicalWPF.Pages
                     Details = DetailsTextBox.Text,
                     LogDate = LogDatePicker.SelectedDate ?? DateTime.Now
                 };
-                await _logService.AddAsync(log);
+                 _logService.AddAsync(log);
                 LoadData();
                 ClearInputs();
                 MessageBox.Show("Thêm nhật ký kiểm tra thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -66,7 +63,7 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void UpdateLog(object sender, RoutedEventArgs e)
+        private  void UpdateLog(object sender, RoutedEventArgs e)
         {
             if (_selectedLog == null)
             {
@@ -84,7 +81,7 @@ namespace SchoolMedicalWPF.Pages
                 _selectedLog.Action = ActionTextBox.Text;
                 _selectedLog.Details = DetailsTextBox.Text;
                 _selectedLog.LogDate = LogDatePicker.SelectedDate ?? DateTime.Now;
-                await _logService.UpdateAsync(_selectedLog);
+                 _logService.UpdateAsync(_selectedLog);
                 LoadData();
                 ClearInputs();
                 MessageBox.Show("Cập nhật nhật ký kiểm tra thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -95,7 +92,7 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void DeleteLog(object sender, RoutedEventArgs e)
+        private  void DeleteLog(object sender, RoutedEventArgs e)
         {
             if (_selectedLog == null)
             {
@@ -108,7 +105,7 @@ namespace SchoolMedicalWPF.Pages
             {
                 try
                 {
-                    await _logService.DeleteAsync(_selectedLog.LogId);
+                     _logService.DeleteAsync(_selectedLog.LogId);
                     LoadData();
                     ClearInputs();
                     MessageBox.Show("Xóa nhật ký kiểm tra thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -125,7 +122,10 @@ namespace SchoolMedicalWPF.Pages
             _selectedLog = LogsDataGrid.SelectedItem as AuditLog;
             if (_selectedLog != null)
             {
-                StaffComboBox.SelectedItem = _selectedLog.Staff;
+                // Tìm Staff trong ItemsSource của ComboBox dựa trên StaffId
+                var selectedStaff = (StaffComboBox.ItemsSource as IEnumerable<Staff>)?.FirstOrDefault(s => s.StaffId == _selectedLog.StaffId);
+                StaffComboBox.SelectedItem = selectedStaff;
+
                 ActionTextBox.Text = _selectedLog.Action;
                 DetailsTextBox.Text = _selectedLog.Details;
                 LogDatePicker.SelectedDate = _selectedLog.LogDate;

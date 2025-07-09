@@ -32,12 +32,12 @@ namespace SchoolMedicalWPF
             MainFrame.Navigate(new Pages.StudentPage());
         }
 
-        private async void LoadDashboardData()
+        private  void LoadDashboardData()
         {
             try
             {
-                TotalStudents.Text = (await _studentService.GetAllAsync()).Count.ToString();
-                TodayAppointments.Text = (await _appointmentService.GetAllAsync())
+                TotalStudents.Text = ( _studentService.GetAllAsync()).Count.ToString();
+                TodayAppointments.Text = (_appointmentService.GetAllAsync())
                     .Count(a => a.AppointmentDate.Date == DateTime.Today).ToString();
             }
             catch (Exception ex)

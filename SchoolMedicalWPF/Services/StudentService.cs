@@ -14,14 +14,14 @@ namespace SchoolMedicalWPF.Services
             _context = new SchoolMedicalDbContext();
         }
 
-        public async Task<List<Student>> GetAllAsync()
+        public  List<Student> GetAllAsync()
         {
-            return await _context.Students.ToListAsync();
+            return  _context.Students.ToList();
         }
 
-        public async Task<Student> GetByIdAsync(int id)
+        public Student GetByIdAsync(int id)
         {
-            return await _context.Students.FindAsync(id);
+            return  _context.Students.Find(id);
         }
 
         public async Task AddAsync(Student student)
@@ -29,24 +29,24 @@ namespace SchoolMedicalWPF.Services
             if (string.IsNullOrWhiteSpace(student.FirstName) || string.IsNullOrWhiteSpace(student.LastName))
                 throw new ArgumentException("Họ và tên không được để trống.");
             _context.Students.Add(student);
-            await _context.SaveChangesAsync();
+             _context.SaveChanges();
         }
 
-        public async Task UpdateAsync(Student student)
+        public void UpdateAsync(Student student)
         {
             if (string.IsNullOrWhiteSpace(student.FirstName) || string.IsNullOrWhiteSpace(student.LastName))
                 throw new ArgumentException("Họ và tên không được để trống.");
             _context.Students.Update(student);
-            await _context.SaveChangesAsync();
+             _context.SaveChanges();
         }
 
-        public async Task DeleteAsync(int id)
+        public void DeleteAsync(int id)
         {
-            var student = await _context.Students.FindAsync(id);
+            var student =  _context.Students.Find(id);
             if (student == null)
                 throw new KeyNotFoundException("Không tìm thấy học sinh.");
             _context.Students.Remove(student);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }

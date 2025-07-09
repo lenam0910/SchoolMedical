@@ -15,39 +15,39 @@ namespace SchoolMedicalWPF.Services
             _context = new SchoolMedicalDbContext();
         }
 
-        public async Task<List<HealthIncident>> GetAllAsync()
+        public List<HealthIncident> GetAllAsync()
         {
-            return await _context.HealthIncidents.Include(h => h.Student).Include(h => h.Staff).ToListAsync();
+            return  _context.HealthIncidents.Include(h => h.Student).Include(h => h.Staff).ToList();
         }
 
-        public async Task<HealthIncident> GetByIdAsync(int id)
+        public HealthIncident GetByIdAsync(int id)
         {
-            return await _context.HealthIncidents.FindAsync(id);
+            return  _context.HealthIncidents.Find(id);
         }
 
-        public async Task AddAsync(HealthIncident incident)
+        public void AddAsync(HealthIncident incident)
         {
             if (incident.StudentId <= 0 || incident.StaffId <= 0)
                 throw new ArgumentException("ID học sinh hoặc nhân viên không hợp lệ.");
             _context.HealthIncidents.Add(incident);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
-        public async Task UpdateAsync(HealthIncident incident)
+        public void UpdateAsync(HealthIncident incident)
         {
             if (incident.StudentId <= 0 || incident.StaffId <= 0)
                 throw new ArgumentException("ID học sinh hoặc nhân viên không hợp lệ.");
             _context.HealthIncidents.Update(incident);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
-        public async Task DeleteAsync(int id)
+        public void DeleteAsync(int id)
         {
-            var incident = await _context.HealthIncidents.FindAsync(id);
+            var incident =  _context.HealthIncidents.Find(id);
             if (incident == null)
                 throw new KeyNotFoundException("Không tìm thấy sự cố sức khỏe.");
             _context.HealthIncidents.Remove(incident);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }

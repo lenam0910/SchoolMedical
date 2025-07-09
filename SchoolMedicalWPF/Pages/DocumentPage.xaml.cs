@@ -18,24 +18,25 @@ namespace SchoolMedicalWPF.Pages
         private readonly StaffService _staffService;
         private Document _selectedDocument;
 
+        
+
+
         public DocumentPage()
         {
             InitializeComponent();
-           
             _documentService = new DocumentService();
             _studentService = new StudentService();
             _staffService = new StaffService();
             LoadData();
         }
 
-
-        private async void LoadData()
+        private  void LoadData()
         {
             try
             {
-                DocumentsDataGrid.ItemsSource = await _documentService.GetAllAsync();
-                StudentComboBox.ItemsSource = await _studentService.GetAllAsync();
-                UploadedByComboBox.ItemsSource = await _staffService.GetAllAsync();
+                DocumentsDataGrid.ItemsSource =  _documentService.GetAllAsync();
+                StudentComboBox.ItemsSource = _studentService.GetAllAsync();
+                UploadedByComboBox.ItemsSource =  _staffService.GetAllAsync();
             }
             catch (Exception ex)
             {
@@ -56,7 +57,7 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void AddDocument(object sender, RoutedEventArgs e)
+        private  void AddDocument(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -74,7 +75,7 @@ namespace SchoolMedicalWPF.Pages
                     UploadedBy = selectedStaff.StaffId,
                     UploadedAt = DateTime.Now
                 };
-                await _documentService.AddAsync(document);
+                 _documentService.AddAsync(document);
                 LoadData();
                 ClearInputs();
                 MessageBox.Show("Thêm tài liệu thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -85,7 +86,7 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void UpdateDocument(object sender, RoutedEventArgs e)
+        private  void UpdateDocument(object sender, RoutedEventArgs e)
         {
             if (_selectedDocument == null)
             {
@@ -105,7 +106,7 @@ namespace SchoolMedicalWPF.Pages
                 _selectedDocument.FilePath = FilePathTextBox.Text;
                 _selectedDocument.Description = DescriptionTextBox.Text;
                 _selectedDocument.UploadedBy = selectedStaff.StaffId;
-                await _documentService.UpdateAsync(_selectedDocument);
+                 _documentService.UpdateAsync(_selectedDocument);
                 LoadData();
                 ClearInputs();
                 MessageBox.Show("Cập nhật tài liệu thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -116,7 +117,7 @@ namespace SchoolMedicalWPF.Pages
             }
         }
 
-        private async void DeleteDocument(object sender, RoutedEventArgs e)
+        private  void DeleteDocument(object sender, RoutedEventArgs e)
         {
             if (_selectedDocument == null)
             {
@@ -129,7 +130,7 @@ namespace SchoolMedicalWPF.Pages
             {
                 try
                 {
-                    await _documentService.DeleteAsync(_selectedDocument.DocumentId);
+                     _documentService.DeleteAsync(_selectedDocument.DocumentId);
                     LoadData();
                     ClearInputs();
                     MessageBox.Show("Xóa tài liệu thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -146,11 +147,17 @@ namespace SchoolMedicalWPF.Pages
             _selectedDocument = DocumentsDataGrid.SelectedItem as Document;
             if (_selectedDocument != null)
             {
-                StudentComboBox.SelectedItem = _selectedDocument.Student;
+                // Tìm Student trong ItemsSource của ComboBox dựa trên StudentId
+                var selectedStudent = (StudentComboBox.ItemsSource as IEnumerable<Student>)?.FirstOrDefault(s => s.StudentId == _selectedDocument.StudentId);
+                StudentComboBox.SelectedItem = selectedStudent;
+
+                // Tìm Staff trong ItemsSource của ComboBox dựa trên StaffId
+                var selectedStaff = (UploadedByComboBox.ItemsSource as IEnumerable<Staff>)?.FirstOrDefault(s => s.StaffId == _selectedDocument.UploadedBy);
+                UploadedByComboBox.SelectedItem = selectedStaff;
+
                 FileNameTextBox.Text = _selectedDocument.FileName;
                 FilePathTextBox.Text = _selectedDocument.FilePath;
                 DescriptionTextBox.Text = _selectedDocument.Description;
-                UploadedByComboBox.SelectedItem = _selectedDocument.UploadedByNavigation;
             }
         }
 

@@ -22,7 +22,7 @@ namespace SchoolMedicalWPF.Windows
 
      
 
-        private async void Register_Click(object sender, RoutedEventArgs e)
+        private  void Register_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -35,7 +35,7 @@ namespace SchoolMedicalWPF.Windows
                     Email = EmailTextBox.Text,
                     Contact = ContactTextBox.Text
                 };
-                await _authService.RegisterAsync(staff, PasswordBox.Password);
+                 _authService.RegisterAsync(staff, PasswordBox.Password);
                 MessageBox.Show("Đăng ký thành công! Vui lòng kiểm tra email để xác nhận.", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
                 Close();
             }

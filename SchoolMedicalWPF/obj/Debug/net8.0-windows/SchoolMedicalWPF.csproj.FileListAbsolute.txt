@@ -33,6 +33,7 @@ C:\Users\THIS PC\Desktop\SchoolMedicalSystem\SchoolMedicalWPF\obj\Debug\net8.0-w
 C:\Users\THIS PC\Desktop\SchoolMedicalSystem\SchoolMedicalWPF\obj\Debug\net8.0-windows\SchoolMedicalWPF.AssemblyInfoInputs.cache
 C:\Users\THIS PC\Desktop\SchoolMedicalSystem\SchoolMedicalWPF\obj\Debug\net8.0-windows\SchoolMedicalWPF.AssemblyInfo.cs
 C:\Users\THIS PC\Desktop\SchoolMedicalSystem\SchoolMedicalWPF\obj\Debug\net8.0-windows\SchoolMedicalWPF.csproj.CoreCompileInputs.cache
+C:\Users\THIS PC\Desktop\SchoolMedicalSystem\SchoolMedicalWPF\obj\Debug\net8.0-windows\SchoolMedicalWPF.sourcelink.json
 C:\Users\THIS PC\Desktop\SchoolMedicalSystem\SchoolMedicalWPF\bin\Debug\net8.0-windows\SchoolMedicalWPF.exe
 C:\Users\THIS PC\Desktop\SchoolMedicalSystem\SchoolMedicalWPF\bin\Debug\net8.0-windows\appsettings.json
 C:\Users\THIS PC\Desktop\SchoolMedicalSystem\SchoolMedicalWPF\bin\Debug\net8.0-windows\SchoolMedicalWPF.deps.json
@@ -83,6 +84,7 @@ C:\Users\THIS PC\Desktop\SchoolMedicalSystem\SchoolMedicalWPF\bin\Debug\net8.0-w
 C:\Users\THIS PC\Desktop\SchoolMedicalSystem\SchoolMedicalWPF\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Tokens.dll
 C:\Users\THIS PC\Desktop\SchoolMedicalSystem\SchoolMedicalWPF\bin\Debug\net8.0-windows\Microsoft.SqlServer.Server.dll
 C:\Users\THIS PC\Desktop\SchoolMedicalSystem\SchoolMedicalWPF\bin\Debug\net8.0-windows\Mono.TextTemplating.dll
+C:\Users\THIS PC\Desktop\SchoolMedicalSystem\SchoolMedicalWPF\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
 C:\Users\THIS PC\Desktop\SchoolMedicalSystem\SchoolMedicalWPF\bin\Debug\net8.0-windows\System.ClientModel.dll
 C:\Users\THIS PC\Desktop\SchoolMedicalSystem\SchoolMedicalWPF\bin\Debug\net8.0-windows\System.Composition.AttributedModel.dll
 C:\Users\THIS PC\Desktop\SchoolMedicalSystem\SchoolMedicalWPF\bin\Debug\net8.0-windows\System.Composition.Convention.dll
@@ -176,4 +178,3 @@ C:\Users\THIS PC\Desktop\SchoolMedicalSystem\SchoolMedicalWPF\obj\Debug\net8.0-w
 C:\Users\THIS PC\Desktop\SchoolMedicalSystem\SchoolMedicalWPF\obj\Debug\net8.0-windows\SchoolMedicalWPF.pdb
 C:\Users\THIS PC\Desktop\SchoolMedicalSystem\SchoolMedicalWPF\obj\Debug\net8.0-windows\SchoolMedicalWPF.genruntimeconfig.cache
 C:\Users\THIS PC\Desktop\SchoolMedicalSystem\SchoolMedicalWPF\obj\Debug\net8.0-windows\ref\SchoolMedicalWPF.dll
-C:\Users\THIS PC\Desktop\SchoolMedicalSystem\SchoolMedicalWPF\bin\Debug\net8.0-windows\Newtonsoft.Json.dll

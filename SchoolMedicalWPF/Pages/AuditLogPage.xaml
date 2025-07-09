@@ -12,10 +12,19 @@
         <Border Grid.Row="0" Background="{StaticResource CardBackground}" CornerRadius="10" Padding="15" Margin="0,0,0,15">
             <StackPanel>
                 <TextBlock Text="Thông tin nhật ký kiểm tra" Style="{StaticResource CustomTextBlock}" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
-                <ComboBox x:Name="StaffComboBox" Margin="0,5" FontFamily="Segoe UI" FontSize="14" DisplayMemberPath="FullName"/>
-                <TextBox x:Name="ActionTextBox" Style="{StaticResource CustomTextBox}" Margin="0,5" Tag="Hành động"/>
-                <TextBox x:Name="DetailsTextBox" Style="{StaticResource CustomTextBox}" Margin="0,5" Tag="Chi tiết" AcceptsReturn="True" Height="60"/>
-                <DatePicker x:Name="LogDatePicker" Margin="0,5" FontFamily="Segoe UI" FontSize="14"/>
+
+                <TextBlock Text="Nhân viên" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
+                <ComboBox x:Name="StaffComboBox" Margin="0,0,0,5" FontFamily="Segoe UI" FontSize="14" DisplayMemberPath="FullName"/>
+
+                <TextBlock Text="Hành động" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
+                <TextBox x:Name="ActionTextBox" Style="{StaticResource CustomTextBox}" Margin="0,0,0,5" Tag="Hành động"/>
+
+                <TextBlock Text="Chi tiết" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
+                <TextBox x:Name="DetailsTextBox" Style="{StaticResource CustomTextBox}" Margin="0,0,0,5" Tag="Chi tiết" AcceptsReturn="True" Height="60"/>
+
+                <TextBlock Text="Ngày ghi" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
+                <DatePicker x:Name="LogDatePicker" Margin="0,0,0,5" FontFamily="Segoe UI" FontSize="14"/>
+
                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                     <Button Content="Thêm" Click="AddLog" Style="{StaticResource CustomButton}" Margin="0,0,10,0" Width="100"/>
                     <Button Content="Cập nhật" Click="UpdateLog" Style="{StaticResource CustomButton}" Margin="0,0,10,0" Width="100"/>
