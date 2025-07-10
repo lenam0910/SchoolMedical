@@ -23,7 +23,6 @@
                 <Button Content="Sự cố sức khỏe" Click="NavigateToHealthIncidents" Style="{StaticResource CustomButton}" Margin="0,5"/>
                 <Button Content="Nhật ký kiểm tra" Click="NavigateToAuditLogs" Style="{StaticResource CustomButton}" Margin="0,5"/>
                 <Button Content="Thông báo" Click="NavigateToNotifications" Style="{StaticResource CustomButton}" Margin="0,5"/>
-                <Button Content="Tài liệu" Click="NavigateToDocuments" Style="{StaticResource CustomButton}" Margin="0,5"/>
                 <Button Content="Đăng xuất" Click="Logout_Click" Style="{StaticResource CustomButton}" Margin="0,20,0,0"/>
             </StackPanel>
         </Border>

@@ -25,6 +25,9 @@
                 <TextBlock Text="Lý do" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
                 <TextBox x:Name="ReasonTextBox" Style="{StaticResource CustomTextBox}" Margin="0,0,0,5" Tag="Lý do"/>
 
+                <TextBlock Text="Email liên hệ" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
+                <TextBox x:Name="Email" Style="{StaticResource CustomTextBox}" Margin="0,0,0,5" Tag="Email"/>
+
                 <TextBlock Text="Trạng thái" Style="{StaticResource CustomTextBlock}" Margin="0,5,0,2"/>
                 <ComboBox x:Name="StatusComboBox" Margin="0,0,0,5" FontFamily="Segoe UI" FontSize="14">
                     <ComboBoxItem Content="Scheduled"/>

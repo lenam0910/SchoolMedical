@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\THIS PC\Desktop\SchoolMedicalSystem\SchoolMedicalWPF\obj\Debug\net8.0-windows\
+C:\Users\ADMIN\Desktop\SchoolMedical\SchoolMedicalWPF\obj\Debug\net8.0-windows\
 SchoolMedicalWPF
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
-C:\Users\THIS PC\Desktop\SchoolMedicalSystem\SchoolMedicalWPF\App.xaml
-13-1809937397
+C:\Users\ADMIN\Desktop\SchoolMedical\SchoolMedicalWPF\App.xaml
+12-1500688222
 
-401430474805
-2361805958186
-Dashboard.xaml;Pages\AppointmentPage.xaml;Pages\AuditLogPage.xaml;Pages\DocumentPage.xaml;Pages\HealthIncidentPage.xaml;Pages\MedicalRecordPage.xaml;Pages\MedicationPage.xaml;Pages\NotificationPage.xaml;Pages\StaffPage.xaml;Pages\StudentPage.xaml;Windows\ForgotPasswordWindow.xaml;Windows\LoginWindow.xaml;Windows\RegisterWindow.xaml;
+37-1318066533
+236-641986400
+Dashboard.xaml;Pages\AppointmentPage.xaml;Pages\AuditLogPage.xaml;Pages\HealthIncidentPage.xaml;Pages\MedicalRecordPage.xaml;Pages\MedicationPage.xaml;Pages\NotificationPage.xaml;Pages\StaffPage.xaml;Pages\StudentPage.xaml;Windows\ForgotPasswordWindow.xaml;Windows\LoginWindow.xaml;Windows\RegisterWindow.xaml;
 
 False
 

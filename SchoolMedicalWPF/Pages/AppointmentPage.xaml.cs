@@ -16,13 +16,14 @@ namespace SchoolMedicalWPF.Pages
         private readonly StudentService _studentService;
         private readonly StaffService _staffService;
         private Appointment _selectedAppointment;
-
+        private EmailSenderService emailSenderService;
         public AppointmentPage()
         {
             InitializeComponent();
             _appointmentService = new AppointmentService();
             _studentService = new StudentService();
             _staffService = new StaffService();
+            emailSenderService = new();
             LoadData();
         }
 
@@ -59,6 +60,7 @@ namespace SchoolMedicalWPF.Pages
                     CreatedAt = DateTime.Now
                 };
                  _appointmentService.AddAsync(appointment);
+                emailSenderService.SendAppointmentNotification(Email.Text,appointment);
                 LoadData();
                 ClearInputs();
                 MessageBox.Show("Thêm lịch hẹn thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);

@@ -54,7 +54,6 @@ namespace SchoolMedicalWPF
         private void NavigateToHealthIncidents(object sender, RoutedEventArgs e) => MainFrame.Navigate(new Pages.HealthIncidentPage());
         private void NavigateToAuditLogs(object sender, RoutedEventArgs e) => MainFrame.Navigate(new Pages.AuditLogPage());
         private void NavigateToNotifications(object sender, RoutedEventArgs e) => MainFrame.Navigate(new Pages.NotificationPage());
-        private void NavigateToDocuments(object sender, RoutedEventArgs e) => MainFrame.Navigate(new Pages.DocumentPage());
 
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
@@ -79,9 +78,9 @@ namespace SchoolMedicalWPF
             {
                 var userInput = ChatInput.Text;
                 ChatDisplay.Text += $"👤 Bạn: {userInput}\n";
+                ChatInput.Text = string.Empty;
                 var response = await _chatBot.SendRequestAndGetResponse(userInput);
                 ChatDisplay.Text += $"🤖 Tư vấn viên: {response}\n";
-                ChatInput.Text = string.Empty;
             }
         }
 

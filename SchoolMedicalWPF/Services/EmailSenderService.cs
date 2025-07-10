@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mail;
 using System.Net;
+using System.Net.Mail;
 using System.Text;
-using System.Windows;
 using System.Threading.Tasks;
+using System.Windows;
+using SchoolMedicalWPF.Models;
 
 namespace SchoolMedicalWPF.Services
 {
@@ -122,6 +123,91 @@ namespace SchoolMedicalWPF.Services
             {
                 return send;
             }
+        }
+    
+    public bool SendAppointmentNotification(string to, Appointment appointment)
+        {
+            bool send = false;
+            string from = "longnp22062004@gmail.com";
+            string subject = "Thông báo Lịch hẹn khám";
+            string pass = "idlnnuzgghsbkkbi";
+
+            string body = $@"
+    <html>
+    <head>
+        <style>
+            body {{
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                text-align: center;
+                padding: 20px;
+            }}
+            .container {{
+                background: #ffffff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+                max-width: 500px;
+                margin: auto;
+            }}
+            .header {{
+                background: #0078D4;
+                padding: 15px;
+                border-radius: 8px 8px 0px 0px;
+                color: white;
+                font-size: 22px;
+                font-weight: bold;
+            }}
+            .info {{
+                font-size: 16px;
+                color: #2c3e50;
+                margin: 10px 0;
+            }}
+            .footer {{
+                font-size: 12px;
+                color: #7f8c8d;
+                margin-top: 20px;
+            }}
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <div class='header'>
+                Thông báo Lịch hẹn khám
+            </div>
+            <p>Xin chào {appointment.Student.FullName},</p>
+            <p>Bạn có lịch hẹn khám với thông tin sau:</p>
+            <p class='info'><strong>Ngày hẹn:</strong> {appointment.AppointmentDate:dd/MM/yyyy HH:mm}</p>
+            <p class='info'><strong>Nhân viên:</strong> {appointment.Staff.FullName}</p>
+            <p class='info'><strong>Lý do:</strong> {appointment.Reason}</p>
+            <p class='info'><strong>Trạng thái:</strong> {appointment.Status}</p>
+            <p>Vui lòng đến đúng giờ. Nếu có thay đổi, xin liên hệ với chúng tôi.</p>
+            <p class='footer'>Trân trọng,<br>Đội ngũ Y tế Trường học</p>
+        </div>
+    </body>
+    </html>";
+
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress(from);
+                mail.To.Add(to);
+                mail.Subject = subject;
+                mail.Body = body;
+                mail.IsBodyHtml = true;
+
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                smtp.EnableSsl = true;
+                smtp.Credentials = new NetworkCredential(from, pass);
+                smtp.Send(mail);
+                send = true;
+            }
+            catch (Exception)
+            {
+                send = false;
+            }
+
+            return send;
         }
     }
 }

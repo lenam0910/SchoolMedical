@@ -25,7 +25,6 @@ public partial class Student
 
     public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
 
-    public virtual ICollection<Document> Documents { get; set; } = new List<Document>();
 
     public virtual ICollection<HealthIncident> HealthIncidents { get; set; } = new List<HealthIncident>();
 

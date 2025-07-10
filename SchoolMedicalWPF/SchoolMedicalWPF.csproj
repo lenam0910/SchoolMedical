@@ -30,9 +30,6 @@
     <Compile Update="Pages\AuditLogPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Pages\DocumentPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Pages\HealthIncidentPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

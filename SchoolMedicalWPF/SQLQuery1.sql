@@ -106,18 +106,7 @@ CREATE TABLE Notifications (
     FOREIGN KEY (StaffId) REFERENCES Staff(StaffId)
 );
 
--- Documents Table (New)
-CREATE TABLE Documents (
-    DocumentId INT PRIMARY KEY IDENTITY(1,1),
-    StudentId INT NOT NULL,
-    FileName NVARCHAR(100) NOT NULL,
-    FilePath NVARCHAR(255) NOT NULL, -- Store file path
-    Description NVARCHAR(200),
-    UploadedBy INT,
-    UploadedAt DATETIME DEFAULT GETDATE(),
-    FOREIGN KEY (StudentId) REFERENCES Students(StudentId),
-    FOREIGN KEY (UploadedBy) REFERENCES Staff(StaffId)
-);
+
 
 -- Insert Sample Data
 INSERT INTO Students (FirstName, LastName, DateOfBirth, Gender, Class, EmergencyContact)
@@ -148,6 +137,5 @@ VALUES (1, 'Login', 'Nurse Emily logged in', '2025-07-09 08:00:00');
 INSERT INTO Notifications (StaffId, Message, IsRead)
 VALUES (1, 'Appointment with John Doe at 10:00 tomorrow', 0);
 
-INSERT INTO Documents (StudentId, FileName, FilePath, Description, UploadedBy)
-VALUES (1, 'AsthmaReport.pdf', 'C:\Docs\AsthmaReport.pdf', 'Asthma check-up report', 1);
+
 GO

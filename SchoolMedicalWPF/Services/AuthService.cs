@@ -10,10 +10,12 @@ namespace SchoolMedicalWPF.Services
     public class AuthService
     {
         private readonly SchoolMedicalDbContext _context;
+        private readonly EmailSenderService emailSender;
 
         public AuthService()
         {
             _context = new SchoolMedicalDbContext();
+            emailSender = new EmailSenderService();
         }
 
         public Staff LoginAsync(string username, string password)
@@ -25,16 +27,28 @@ namespace SchoolMedicalWPF.Services
             _context.SaveChanges();
             return staff;
         }
-
-        public bool RequestPasswordResetAsync(string email)
+        public bool ChangePassword(string email, string newPassword)
         {
-            var staff =  _context.Staff.FirstOrDefaultAsync(s => s.Email == email);
+          
+
+            var staff = _context.Staff.FirstOrDefault(s => s.Email == email);
             if (staff == null)
                 return false;
 
-            string resetCode = Guid.NewGuid().ToString().Substring(0, 8);
-            Console.WriteLine($"Mã khôi phục cho {email}: {resetCode}"); // Thay bằng gửi email thực tế
+            staff.PasswordHash = BCrypt.Net.BCrypt.HashPassword(newPassword);
+            _context.SaveChanges();
             return true;
+        }
+        public String RequestPasswordResetAsync(string email)
+        {
+            var staff =  _context.Staff.FirstOrDefaultAsync(s => s.Email == email);
+            if (staff == null)
+            {
+                return null;
+            }
+            String OTP = emailSender.GenerateOTP();
+            emailSender.SendEmail(email, OTP);
+            return OTP;
         }
 
         public void RegisterAsync(Staff staff, string password)

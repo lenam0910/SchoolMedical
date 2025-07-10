@@ -19,8 +19,6 @@ public partial class SchoolMedicalDbContext : DbContext
 
     public virtual DbSet<AuditLog> AuditLogs { get; set; }
 
-    public virtual DbSet<Document> Documents { get; set; }
-
     public virtual DbSet<HealthIncident> HealthIncidents { get; set; }
 
     public virtual DbSet<MedicalRecord> MedicalRecords { get; set; }
@@ -79,26 +77,7 @@ public partial class SchoolMedicalDbContext : DbContext
                 .HasConstraintName("FK__AuditLogs__Staff__5165187F");
         });
 
-        modelBuilder.Entity<Document>(entity =>
-        {
-            entity.HasKey(e => e.DocumentId).HasName("PK__Document__1ABEEF0FA109BAB0");
-
-            entity.Property(e => e.Description).HasMaxLength(200);
-            entity.Property(e => e.FileName).HasMaxLength(100);
-            entity.Property(e => e.FilePath).HasMaxLength(255);
-            entity.Property(e => e.UploadedAt)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
-
-            entity.HasOne(d => d.Student).WithMany(p => p.Documents)
-                .HasForeignKey(d => d.StudentId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Documents__Stude__59FA5E80");
-
-            entity.HasOne(d => d.UploadedByNavigation).WithMany(p => p.Documents)
-                .HasForeignKey(d => d.UploadedBy)
-                .HasConstraintName("FK__Documents__Uploa__5AEE82B9");
-        });
+       
 
         modelBuilder.Entity<HealthIncident>(entity =>
         {
