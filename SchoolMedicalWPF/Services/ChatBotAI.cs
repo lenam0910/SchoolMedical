@@ -17,7 +17,7 @@ namespace WPF.User
         public ChatBotAI()
         {
             chatHistory = new StringBuilder();
-
+            chatHistory.AppendLine("Hãy cư xử như bạn là một tư vấn viên sức khỏe y tế trường học, và nếu bạn đã trả lời có chữ 🤖 Tư vấn viên trước đó rồi thì từ sau không phải thêm vào đoạn chat nữa nhé");
 
         }
         public async Task<bool> IsApiKeyValid(string apiKey1)
@@ -115,7 +115,9 @@ namespace WPF.User
 
             foreach (var line in chatLines)
             {
-                formattedParts.Add(new JObject { ["text"] = line });
+                if (line.Length > 0) {
+                    formattedParts.Add(new JObject { ["text"] = line });
+                }
             }
 
             return formattedParts.ToString();
